@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podpora — VoxRox Mail</title>
+    <meta name="description" content="Podpora pro VoxRox Mail: jak nahlásit chybu, kde získat pomoc, jak odpovědně nahlásit bezpečnostní problém a jaké verze podporujeme.">
+
+    <link rel="canonical" href="https://voxrox.org/support/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/support/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/support/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/support/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Přeskočit na obsah</a>
+
+    <header>
+        <div class="container nav-wrap">
+            <a href="/" class="logo" aria-label="VoxRox — domů">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
+                </svg>
+                <span class="brand-name">VoxRox</span>
+            </a>
+            <nav aria-label="Hlavní">
+                <ul>
+                    <li><a href="/#vize">Vize</a></li>
+                    <li><a href="/#projekty">Projekty</a></li>
+                    <li><a href="/privacy/">Soukromí</a></li>
+                    <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/support/" aria-current="true" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/support/" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container prose" id="main-content">
+        <h1>Podpora</h1>
+        <p class="doc-meta">VoxRox Mail je v aktivním vývoji (alpha). Děkujeme za trpělivost i za každou zpětnou vazbu.</p>
+
+        <h2>Potřebuji pomoc nebo chci nahlásit chybu</h2>
+        <p>Nejrychlejší cesta je e-mail na <a href="mailto:info@voxrox.org">info@voxrox.org</a> nebo nové issue na GitHubu:</p>
+        <ul>
+            <li><a href="https://github.com/TheVoxRox/mail/issues">github.com/TheVoxRox/mail/issues</a> — chyby, návrhy funkcí, dotazy.</li>
+        </ul>
+        <p>Ať vám můžeme pomoct co nejrychleji, přiložte prosím:</p>
+        <ul>
+            <li>Verzi aplikace (<strong>Nápověda → O aplikaci</strong>, případně pole <code>appVersion</code> v souboru <code>session.json</code>).</li>
+            <li>Verzi systému Windows.</li>
+            <li>Poskytovatele e-mailu (Gmail, Outlook, Seznam, vlastní server) a způsob přihlášení (heslo / OAuth).</li>
+            <li>Popis kroků, kterými se chyba projeví.</li>
+        </ul>
+
+        <h2>Diagnostický balíček</h2>
+        <p>Pokud vás o to požádáme, můžete ručně exportovat diagnostický balíček (<code>GET /api/internal/diagnostic-dump</code>). Obsahuje pouze <strong>maskované</strong> e-mailové adresy, konfiguraci účtů (host, port, SSL), stav synchronizace a runtime metriky. <strong>Neobsahuje</strong> přihlašovací údaje, OAuth tokeny, obsah zpráv ani předměty. Detaily viz <a href="/privacy/">Zásady ochrany soukromí</a>.</p>
+
+        <h2>Podporované verze</h2>
+        <p>Bezpečnostní opravy dostává pouze nejnovější vydaný instalátor (distribuovaný přes stránku <a href="https://github.com/TheVoxRox/mail/releases">GitHub Releases</a>). Předběžné tagy a nevydané commity podporované nejsou.</p>
+        <table>
+            <thead>
+                <tr><th scope="col">Verze</th><th scope="col">Podpora</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>latest</code></td><td>Ano — aktuální vydání</td></tr>
+                <tr><td>Starší</td><td>Ne — aktualizujte prosím</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Nahlášení bezpečnostního problému</h2>
+        <div class="note">
+            <p><strong>Bezpečnostní problémy prosím nehlaste ve veřejném issue trackeru.</strong> Napište na <a href="mailto:info@voxrox.org">info@voxrox.org</a>. Každé hlášení považujeme za neveřejné, dokud nebude k dispozici oprava a vydání.</p>
+        </div>
+        <p>Do hlášení uveďte:</p>
+        <ul>
+            <li>Popis problému a jak ho reprodukovat.</li>
+            <li>Dotčenou verzi (<strong>Nápověda → O aplikaci</strong> nebo pole <code>appVersion</code> v <code>session.json</code>).</li>
+            <li>Operační systém, poskytovatele e-mailu a zda problém vyžaduje síťový přístup ke konkrétnímu serveru.</li>
+            <li>Proof-of-concept, pokud nějaký máte (v libovolném formátu).</li>
+        </ul>
+        <p>Potvrzení přijetí byste měli dostat <strong>do 7 kalendářních dnů</strong>. Výchozí lhůta pro zveřejnění je <strong>90 dní</strong> od prvního hlášení, po vzájemné dohodě ji lze prodloužit (např. pokud oprava vyžaduje delší nasazení).</p>
+
+        <h3>Co považujeme za zranitelnost</h3>
+        <ul>
+            <li>Cross-site scripting (XSS) v zobrazeném obsahu pošty navzdory HTML sanitizéru.</li>
+            <li>Obejití SSRF ochrany v loopback handshake mezi Tauri a Spring backendem.</li>
+            <li>Obejití kontroly API klíče v hlavičce.</li>
+            <li>Přihlašovací údaje uložené kdekoli na disku v otevřené podobě (hesla i OAuth refresh tokeny musí být šifrované).</li>
+            <li>Únik tokenů do log souborů.</li>
+            <li>Útoky na downgrade IMAP/SMTP (vynucené odebrání STARTTLS).</li>
+            <li>Eskalace oprávnění vůči sidecar procesu.</li>
+        </ul>
+
+        <h3>Co za zranitelnost nepovažujeme</h3>
+        <ul>
+            <li>Teoretické problémy bez funkční ukázky.</li>
+            <li>Hlášení cílící na služby třetích stran, na kterých závisíme (Gmail, Microsoft 365, Seznam) — ty hlaste přímo poskytovateli.</li>
+            <li>DoS fyzickým zničením zařízení, na kterém aplikace běží.</li>
+        </ul>
+        <p>Po vydání opravy uvedeme nálezce v poznámkách k vydání, pokud si nepřeje zůstat v anonymitě.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li><a href="/">Domů</a></li>
+                <li><a href="/privacy/">Zásady soukromí</a></li>
+                <li><a href="/support/" aria-current="page">Podpora</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
+            <p>&copy; 2026 VoxRox • Vyvíjeno pro inkluzivní budoucnost.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

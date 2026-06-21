@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support — VoxRox Mail</title>
+    <meta name="description" content="Support for VoxRox Mail: how to report a bug, where to get help, how to responsibly disclose a security issue, and which versions are supported.">
+
+    <link rel="canonical" href="https://voxrox.org/en/support/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/support/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/support/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/support/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <header>
+        <div class="container nav-wrap">
+            <a href="/en/" class="logo" aria-label="VoxRox — home">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
+                </svg>
+                <span class="brand-name">VoxRox</span>
+            </a>
+            <nav aria-label="Main">
+                <ul>
+                    <li><a href="/en/#vision">Vision</a></li>
+                    <li><a href="/en/#projects">Projects</a></li>
+                    <li><a href="/en/privacy/">Privacy</a></li>
+                    <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/support/" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/support/" aria-current="true" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container prose" id="main-content">
+        <h1>Support</h1>
+        <p class="doc-meta">VoxRox Mail is in active development (alpha). Thank you for your patience and for every piece of feedback.</p>
+
+        <h2>I need help or want to report a bug</h2>
+        <p>The fastest route is an e-mail to <a href="mailto:info@voxrox.org">info@voxrox.org</a> or a new issue on GitHub:</p>
+        <ul>
+            <li><a href="https://github.com/TheVoxRox/mail/issues">github.com/TheVoxRox/mail/issues</a> — bugs, feature requests, questions.</li>
+        </ul>
+        <p>So we can help as quickly as possible, please include:</p>
+        <ul>
+            <li>The application version (<strong>Help → About</strong>, or the <code>appVersion</code> field in <code>session.json</code>).</li>
+            <li>Your Windows version.</li>
+            <li>Your e-mail provider (Gmail, Outlook, Seznam, custom server) and login method (password / OAuth).</li>
+            <li>The steps that reproduce the problem.</li>
+        </ul>
+
+        <h2>Diagnostic bundle</h2>
+        <p>If we ask for it, you can manually export a diagnostic bundle (<code>GET /api/internal/diagnostic-dump</code>). It contains only <strong>masked</strong> e-mail addresses, account configuration (host, port, SSL), synchronization status and runtime metrics. It <strong>does not contain</strong> credentials, OAuth tokens, message bodies or subjects. See the <a href="/en/privacy/">Privacy Policy</a> for details.</p>
+
+        <h2>Supported versions</h2>
+        <p>Only the latest released installer (distributed via the <a href="https://github.com/TheVoxRox/mail/releases">GitHub Releases</a> page) receives security fixes. Pre-release tags and unreleased commits are not supported.</p>
+        <table>
+            <thead>
+                <tr><th scope="col">Version</th><th scope="col">Supported</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>latest</code></td><td>Yes — current release</td></tr>
+                <tr><td>Older</td><td>No — please update</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Reporting a security issue</h2>
+        <div class="note">
+            <p><strong>Please do not report security issues in the public issue tracker.</strong> Email <a href="mailto:info@voxrox.org">info@voxrox.org</a>. We treat every report as private until a fix and a release are available.</p>
+        </div>
+        <p>Please include:</p>
+        <ul>
+            <li>A description of the issue and how to reproduce it.</li>
+            <li>The affected version (<strong>Help → About</strong> or the <code>appVersion</code> field in <code>session.json</code>).</li>
+            <li>Your operating system, mail provider, and whether the issue requires network access to a specific server.</li>
+            <li>A proof-of-concept if you have one (in any format).</li>
+        </ul>
+        <p>You should receive an acknowledgement <strong>within 7 calendar days</strong>. Our default disclosure window is <strong>90 days</strong> from the initial report, extended by mutual agreement if a fix requires a longer rollout.</p>
+
+        <h3>What counts as a vulnerability</h3>
+        <ul>
+            <li>Cross-site scripting (XSS) in rendered mail content despite the HTML sanitiser.</li>
+            <li>Bypass of the SSRF guard in the Tauri / Spring loopback handshake.</li>
+            <li>Bypass of the API-key header check.</li>
+            <li>Plain-text credentials written anywhere on disk (passwords and OAuth refresh tokens must be encrypted at rest).</li>
+            <li>Token leakage into log files.</li>
+            <li>IMAP / SMTP downgrade attacks (forced STARTTLS strip).</li>
+            <li>Privilege escalation against the sidecar process.</li>
+        </ul>
+
+        <h3>What does not count</h3>
+        <ul>
+            <li>Theoretical issues without a working demonstration.</li>
+            <li>Reports targeting third-party services we depend on (Gmail, Microsoft 365, Seznam) — please report those directly to the provider.</li>
+            <li>DoS by physically destroying the device the app runs on.</li>
+        </ul>
+        <p>We will credit reporters in the release notes unless they prefer to remain anonymous.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/privacy/">Privacy Policy</a></li>
+                <li><a href="/en/support/" aria-current="page">Support</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
+            <p>&copy; 2026 VoxRox • Built for an inclusive future.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

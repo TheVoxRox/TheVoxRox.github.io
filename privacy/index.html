@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zásady ochrany soukromí — VoxRox Mail</title>
+    <meta name="description" content="Zásady ochrany soukromí pro VoxRox Mail. Aplikace běží lokálně, vaše pošta i přihlašovací údaje zůstávají na vašem zařízení. Žádný backend, žádná telemetrie.">
+
+    <link rel="canonical" href="https://voxrox.org/privacy/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/privacy/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/privacy/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/privacy/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Přeskočit na obsah</a>
+
+    <header>
+        <div class="container nav-wrap">
+            <a href="/" class="logo" aria-label="VoxRox — domů">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
+                </svg>
+                <span class="brand-name">VoxRox</span>
+            </a>
+            <nav aria-label="Hlavní">
+                <ul>
+                    <li><a href="/#vize">Vize</a></li>
+                    <li><a href="/#projekty">Projekty</a></li>
+                    <li><a href="/support/">Podpora</a></li>
+                    <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/privacy/" aria-current="true" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/privacy/" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container prose" id="main-content">
+        <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
+        <p class="doc-meta">Verze 2026-06-01 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+
+        <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení).</p>
+
+        <p>VoxRox neprovozuje pro tuto aplikaci žádný backendový server, neukládá vaše data v cloudu a neshromažďuje telemetrii, analytiku ani crash reporty na externí endpoint.</p>
+
+        <h2>Kdo je správce dat</h2>
+        <p>Správcem osobních údajů ve smyslu GDPR jste <strong>vy sami</strong> — všechna data jsou uložena lokálně na vašem zařízení pod vaším účtem operačního systému. VoxRox poskytuje pouze software, který data zpracovává podle vašich pokynů, a nemá k vašim datům přístup.</p>
+
+        <h2>Jaká data aplikace ukládá lokálně</h2>
+        <p>Veškerá perzistentní data jsou ve standardním Windows datovém adresáři:</p>
+        <pre><code>%LOCALAPPDATA%\VoxRox\Mail\</code></pre>
+        <p>Obsah:</p>
+        <table>
+            <thead>
+                <tr><th scope="col">Soubor / složka</th><th scope="col">Co obsahuje</th></tr>
+            </thead>
+            <tbody>
+                <tr><td><code>crypto.bin</code></td><td>Lokální šifrovací klíč pro přihlašovací údaje (vzniká při prvním startu).</td></tr>
+                <tr><td><code>crypto.fingerprint</code></td><td>Otisk klíče pro detekci výměny nebo poškození <code>crypto.bin</code>.</td></tr>
+                <tr><td><code>session.json</code></td><td>Port a interní API klíč aktuálně běžícího backendu (přepisuje se při každém startu).</td></tr>
+                <tr><td><code>db/mail.db</code></td><td>SQLite databáze: účty, kontakty, hlavičky a těla zpráv, stav synchronizace.</td></tr>
+                <tr><td><code>db/mail.db.backup-pre-v*</code></td><td>Záloha DB před každou migrací schématu (uchovává se 3 nejnovější).</td></tr>
+                <tr><td><code>attachments/</code></td><td>Lokální kopie příloh stažených ze serveru.</td></tr>
+                <tr><td><code>logs/mail.log</code></td><td>Aplikační log (rotuje, max 7 souborů × 10 MB, celkem cca 100 MB).</td></tr>
+                <tr><td><code>logs/audit.log</code></td><td>Bezpečnostní/auditní log (retenční doba 365 dní, max cca 500 MB).</td></tr>
+                <tr><td><code>tmp/</code></td><td>Dočasné soubory (mažou se automaticky).</td></tr>
+            </tbody>
+        </table>
+
+        <h3>Co je šifrované</h3>
+        <ul>
+            <li><strong>Hesla k IMAP/SMTP</strong> a <strong>OAuth tokeny</strong> (Google, Microsoft) jsou šifrované algoritmem AES-GCM s klíčem odvozeným z <code>crypto.bin</code>. Bez <code>crypto.bin</code> uloženého ve vašem profilu je nelze dešifrovat.</li>
+            <li><strong><code>crypto.bin</code> samotný</strong> je chráněn pouze oprávněními Windows souborového systému vašeho uživatelského profilu. Doporučení: nezálohujte ho do veřejných cloudových úložišť bez dodatečného šifrování.</li>
+        </ul>
+
+        <h3>Co šifrované není</h3>
+        <ul>
+            <li>Hlavičky a těla e-mailových zpráv, kontakty, předměty zpráv, odesílatelé, přílohy, log soubory a metadata synchronizace jsou v SQLite databázi a na disku v otevřené podobě. Pokud potřebujete ochranu před fyzickým přístupem k disku, použijte šifrování celého disku (BitLocker apod.).</li>
+        </ul>
+
+        <h2>Jaká data putují po síti</h2>
+        <p>Aplikace zahájí síťovou komunikaci jen v těchto případech:</p>
+        <ol>
+            <li><strong>Připojení k vašemu e-mailovému serveru (IMAP a SMTP)</strong> — stahování pošty, odesílání, synchronizace složek. Kam přesně se aplikace připojuje záleží na účtu, který přidáte (Gmail, Outlook, Seznam, vlastní server).</li>
+            <li><strong>OAuth přihlášení (Google, Microsoft)</strong> — pokud zvolíte tento způsob přihlášení místo aplikačního hesla. Aplikace otevře váš výchozí prohlížeč na přihlašovací stránce poskytovatele, obdrží access token + refresh token a uloží je lokálně (šifrované, viz výše). Pravidelně si od poskytovatele bere nový access token přes refresh token.</li>
+            <li><strong>Aktualizace aplikace</strong> (Tauri updater) — kontrola dostupné nové verze proti release endpointu a stažení podepsaného instalátoru. Konkrétní URL bude potvrzena před prvním veřejným vydáním.</li>
+        </ol>
+        <p>Aplikace <strong>neposílá</strong> vaše e-maily, kontakty ani aktivitu na servery VoxRox ani na žádnou analytickou platformu třetí strany.</p>
+
+        <h3>Diagnostické reporty z klienta</h3>
+        <p>Frontend posílá technické chyby (JavaScript exceptions, neúspěšné API volání) na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači. Tyto reporty se nikam neodesílají, slouží pouze k zápisu do lokálních logů.</p>
+        <p>Pokud kontaktujete podporu a poskytnete jí ručně exportovaný diagnostický balíček (<code>GET /api/internal/diagnostic-dump</code>), tento balíček obsahuje pouze maskované e-mailové adresy, konfiguraci účtů (host, port, SSL), stav synchronizace a runtime metriky. <strong>Neobsahuje</strong> přihlašovací údaje, OAuth tokeny, obsah zpráv ani předměty.</p>
+
+        <h2>Třetí strany</h2>
+        <p>Pokud přidáte účet, vstupují do hry tito poskytovatelé:</p>
+        <ul>
+            <li><strong>Váš poskytovatel e-mailu</strong> (Gmail, Outlook, Seznam, vlastní server, …) — řídí se vlastními zásadami zpracování dat.</li>
+            <li><strong>Google</strong> — pokud používáte Gmail s OAuth (<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>).</li>
+            <li><strong>Microsoft</strong> — pokud používáte Outlook/Hotmail/Live s OAuth (<a href="https://privacy.microsoft.com/">privacy.microsoft.com</a>).</li>
+            <li><strong>GitHub</strong> — pokud se v budoucnu rozhodneme distribuovat aktualizace přes GitHub Releases, aplikace bude periodicky kontrolovat dostupnost nové verze proti GitHub API (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>).</li>
+        </ul>
+        <p>VoxRox nemá s těmito poskytovateli žádnou sdílecí dohodu o vašich datech. Komunikace probíhá přímo mezi vaším počítačem a daným serverem.</p>
+
+        <h2>Vaše práva a možnosti kontroly</h2>
+        <ul>
+            <li><strong>Smazat účet z aplikace</strong> — odeberte účet v Nastavení. Tím se kaskádově smaže záznam účtu, přihlašovací údaje, stav synchronizace, zprávy a kontakty z lokální databáze.</li>
+            <li><strong>Odvolat OAuth přístup</strong> u poskytovatele:
+                <ul>
+                    <li>Google: <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> → vyhledat „VoxRox Mail" → Odebrat přístup.</li>
+                    <li>Microsoft: <a href="https://account.microsoft.com/privacy/app-access">account.microsoft.com/privacy/app-access</a> (osobní účty) nebo <a href="https://myapps.microsoft.com">myapps.microsoft.com</a> (firemní účty) → najít aplikaci podle Client ID → „Remove permission". Microsoft neimplementuje standardní revoke endpoint (RFC 7009), takže odvolání musíte provést u nich.</li>
+                </ul>
+            </li>
+            <li><strong>Kompletní odstranění dat</strong> — odinstalujte aplikaci a poté <strong>ručně smažte</strong> adresář <code>%LOCALAPPDATA%\VoxRox\Mail\</code>. Instalátor data adresář záměrně nemaže (aby šlo bezpečně přeinstalovat bez ztráty pošty).</li>
+            <li><strong>Export dat</strong> — kontakty lze exportovat do vCard přes Nastavení &gt; Kontakty. Export celé databáze není ve verzi 0.x dostupný v UI; pokročilí uživatelé si mohou zkopírovat <code>db/mail.db</code> přímo a otevřít v jakémkoli SQLite prohlížeči (např. DB Browser for SQLite).</li>
+            <li><strong>Přístup k logům</strong> — soubory v <code>logs/</code> jsou prostý text čitelný editorem.</li>
+        </ul>
+
+        <h2>Děti</h2>
+        <p>Aplikace není cíleně určená pro děti pod 16 let, ale ani jejich použití neomezuje — funkce závisí výhradně na účtech, které si uživatel sám přidá. Doporučení rodičům: ověřte, že zvolený poskytovatel e-mailu povoluje použití dítětem.</p>
+
+        <h2>Bezpečnostní oznámení</h2>
+        <p>Pokud objevíte zranitelnost nebo bezpečnostní problém v aplikaci, <strong>nehlaste ho prosím veřejně v issue trackeru.</strong> Napište na <a href="mailto:info@voxrox.org">info@voxrox.org</a>. Podrobnosti k odpovědnému zveřejnění najdete na stránce <a href="/support/">Podpora</a>.</p>
+
+        <h2>Změny těchto zásad</h2>
+        <p>Tato verze je předběžná. Před prvním veřejným vydáním a při každé materiální změně (např. zapojení telemetrie, změna seznamu třetích stran) tento dokument aktualizujeme. Aktuální verze je vždy součástí instalace a v repozitáři projektu.</p>
+
+        <h2>Otevřené body před prvním vydáním</h2>
+        <p>Tyto položky budou doplněny předtím, než je tento dokument finalizován:</p>
+        <ul>
+            <li>Konkrétní Tauri updater endpoint URL.</li>
+            <li>Právní review (zejména GDPR formulace „správce dat" pro variantu, kdy uživatel nasazuje aplikaci v rámci organizace).</li>
+        </ul>
+
+        <div class="note">
+            <p>VoxRox Mail je open-source software pod licencí MIT (viz <a href="https://github.com/TheVoxRox/mail/blob/main/LICENSE">LICENSE</a>). Závislosti třetích stran jsou uvedené v souborech <code>THIRD_PARTY_LICENSES.md</code> jednotlivých modulů (<a href="https://github.com/TheVoxRox/mail/blob/main/backend/THIRD_PARTY_LICENSES.md">backend</a>, <a href="https://github.com/TheVoxRox/mail/blob/main/frontend/THIRD_PARTY_LICENSES.md">frontend</a>, <a href="https://github.com/TheVoxRox/mail/blob/main/frontend/src-tauri/THIRD_PARTY_LICENSES.md">Tauri runtime</a>).</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li><a href="/">Domů</a></li>
+                <li><a href="/privacy/" aria-current="page">Zásady soukromí</a></li>
+                <li><a href="/support/">Podpora</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
+            <p>&copy; 2026 VoxRox • Vyvíjeno pro inkluzivní budoucnost.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

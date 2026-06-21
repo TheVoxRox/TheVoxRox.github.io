@@ -1,0 +1,305 @@
+/* =========================================================================
+   VoxRox — shared site styles
+   Brand kit v1.1 (colors derived from the app):
+     Ink #0E1116 · Accent #2E6BE6 · Paper #FAFAF7
+   ========================================================================= */
+
+:root {
+    --ink: #0E1116;
+    --paper: #FAFAF7;
+    --accent: #2E6BE6;
+    --accent-ink: #1B50B4;   /* darker accent for hover emphasis */
+
+    --bg: var(--paper);
+    --text: var(--ink);
+    --text-sec: #4A4F57;     /* secondary text, >= 4.5:1 on paper */
+    --card-bg: #FFFFFF;
+    --hairline: #D5D7DB;
+    --focus-ring: var(--accent);
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Atkinson Hyperlegible', system-ui, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* --- Accessibility: skip link --------------------------------------------- */
+.skip-link {
+    position: absolute;
+    padding: 1rem;
+    background: var(--ink);
+    color: #FFF;
+    left: 1rem;
+    top: 0;
+    transform: translateY(-150%);
+    transition: transform 0.2s;
+    z-index: 2000;
+    text-decoration: none;
+    font-weight: bold;
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* --- Layout --------------------------------------------------------------- */
+.container {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+header {
+    border-bottom: 2px solid var(--ink);
+    padding: 1rem 0;
+}
+
+.nav-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: var(--text);
+}
+
+.logo svg { display: block; }
+
+.brand-name { font-size: 2.2rem; font-weight: bold; }
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-weight: bold;
+    border-bottom: 3px solid transparent;
+    padding: 0.2rem 0;
+}
+
+nav a:hover, nav a:focus {
+    border-bottom-color: var(--accent);
+    outline: none;
+}
+
+nav a[aria-current="page"] {
+    border-bottom-color: var(--ink);
+}
+
+/* Language switcher */
+.lang-switch {
+    display: inline-flex;
+    gap: 0.4rem;
+    align-items: center;
+    font-weight: bold;
+}
+.lang-switch a { padding: 0.2rem 0.35rem; }
+.lang-switch [aria-current="true"] {
+    color: var(--accent-ink);
+    text-decoration: underline;
+}
+.lang-switch .sep { color: var(--hairline); }
+
+/* --- Sections ------------------------------------------------------------- */
+.hero { padding: clamp(3rem, 8vh, 5rem) 0 2rem; }
+section { padding: 3rem 0; }
+
+.moto-eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--accent-ink);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+h1 {
+    font-size: clamp(2.2rem, 6vw, 3.5rem);
+    margin: 0 0 1.5rem 0;
+    line-height: 1.1;
+}
+
+.lead {
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
+    color: var(--text-sec);
+    max-width: 45ch;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 2.2rem;
+    margin: 0 0 1.5rem 0;
+    border-bottom: 3px solid var(--ink);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+h3 { font-size: 1.5rem; margin: 1.5rem 0 0.75rem; }
+h4 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+
+/* --- Cards & badges ------------------------------------------------------- */
+.project-card {
+    background: var(--card-bg);
+    padding: clamp(1.5rem, 5vw, 2.5rem);
+    border: 2px solid var(--ink);
+    box-shadow: 8px 8px 0px var(--ink);
+    margin: 2.5rem 0;
+}
+
+.badge {
+    background: var(--ink);
+    color: #FFF;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.tech-info {
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* --- Buttons -------------------------------------------------------------- */
+.cta-button {
+    display: inline-block;
+    background: var(--ink);
+    color: #FFF;
+    padding: 1rem 2rem;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    border: 2px solid var(--ink);
+}
+
+.cta-button:hover, .cta-button:focus {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #FFF;
+}
+
+/* --- Links (body copy) ---------------------------------------------------- */
+main a:not(.cta-button):not(.logo) {
+    color: var(--accent-ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+main a:not(.cta-button):not(.logo):hover {
+    text-decoration-thickness: 2px;
+}
+
+/* --- Long-form content (privacy / support) -------------------------------- */
+.prose { padding-bottom: 2rem; }
+.prose p, .prose li { max-width: 70ch; }
+.prose ul, .prose ol { padding-left: 1.5rem; }
+.prose li { margin-bottom: 0.5rem; }
+
+.prose table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+.prose th, .prose td {
+    border: 1px solid var(--hairline);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+    vertical-align: top;
+}
+.prose th { background: var(--card-bg); }
+
+.prose code, .prose pre {
+    font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+    background: #EEF0F2;
+    color: var(--ink);
+}
+.prose code { padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.95em; }
+.prose pre {
+    padding: 1rem;
+    overflow-x: auto;
+    border: 1px solid var(--hairline);
+    border-radius: 4px;
+}
+.prose pre code { background: none; padding: 0; }
+
+.doc-meta {
+    color: var(--text-sec);
+    font-size: 0.95rem;
+    font-style: italic;
+    margin-bottom: 2rem;
+}
+
+.note {
+    border-left: 4px solid var(--accent);
+    background: var(--card-bg);
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+}
+
+/* --- Footer --------------------------------------------------------------- */
+footer {
+    margin-top: 4rem;
+    padding: 3rem 0;
+    border-top: 1px solid var(--hairline);
+    text-align: center;
+}
+
+.footer-nav {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+}
+.footer-nav a {
+    color: var(--text);
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+}
+.footer-nav a:hover, .footer-nav a:focus { border-bottom-color: var(--accent); }
+
+/* --- Focus state (global) ------------------------------------------------- */
+a:focus-visible,
+button:focus-visible {
+    outline: 4px solid var(--focus-ring);
+    outline-offset: 4px;
+}
+
+/* --- Responsive ----------------------------------------------------------- */
+@media (max-width: 650px) {
+    .nav-wrap { justify-content: center; text-align: center; }
+    h1, .moto-eyebrow, .lead { text-align: center; margin-left: auto; margin-right: auto; }
+    .project-card { box-shadow: 4px 4px 0px var(--ink); }
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://voxrox.org/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/"/>
+  </url>
+  <url>
+    <loc>https://voxrox.org/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/privacy/"/>
+  </url>
+  <url>
+    <loc>https://voxrox.org/support/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/support/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/support/"/>
+  </url>
+  <url>
+    <loc>https://voxrox.org/en/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/"/>
+  </url>
+  <url>
+    <loc>https://voxrox.org/en/privacy/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/privacy/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/privacy/"/>
+  </url>
+  <url>
+    <loc>https://voxrox.org/en/support/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/support/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/support/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/support/"/>
+  </url>
+</urlset>

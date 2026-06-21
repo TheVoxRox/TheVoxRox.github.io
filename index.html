@@ -4,188 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VoxRox | Modulární. Přístupný. Spolehlivý.</title>
-    
+    <meta name="description" content="VoxRox staví otevřené digitální nástroje, kde je přístupnost pro nevidomé a slabozraké základním stavebním kamenem. Aktuálně vyvíjíme VoxRox Mail — nativní poštovní klient optimalizovaný pro odečítače obrazovky.">
+
+    <link rel="canonical" href="https://voxrox.org/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VoxRox">
+    <meta property="og:title" content="VoxRox — Modulární. Přístupný. Spolehlivý.">
+    <meta property="og:description" content="Otevřené digitální nástroje, kde je přístupnost základním stavebním kamenem. Aktuálně vyvíjíme VoxRox Mail.">
+    <meta property="og:url" content="https://voxrox.org/">
+    <meta property="og:image" content="https://voxrox.org/assets/voxrox-lockup.png">
+    <meta property="og:locale" content="cs_CZ">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta name="twitter:card" content="summary_large_image">
+
     <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #D9A400;
-            --bg: #FFFFFF;
-            --text: #000000;
-            --text-sec: #444444;
-            --card-bg: #F8F9FA;
-            --focus-ring: #0056b3;
-        }
-
-        * { box-sizing: border-box; }
-        
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Atkinson Hyperlegible', sans-serif;
-            margin: 0;
-            line-height: 1.6;
-            font-size: clamp(1rem, 2vw, 1.15rem);
-            text-rendering: optimizeLegibility;
-        }
-
-        /* Přístupnost: Moderní Skip Link */
-        .skip-link {
-            position: absolute;
-            padding: 1rem;
-            background: var(--text);
-            color: #FFF;
-            left: 1rem;
-            top: 0;
-            transform: translateY(-100%);
-            transition: transform 0.2s;
-            z-index: 2000;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .skip-link:focus { transform: translateY(0); }
-
-        .container {
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        header {
-            border-bottom: 2px solid var(--text);
-            padding: 1rem 0;
-        }
-
-        .nav-wrap {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            text-decoration: none;
-            color: var(--text);
-        }
-
-        .brand-name { font-size: 2.2rem; font-weight: bold; }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            gap: 1.5rem;
-        }
-
-        nav a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: bold;
-            border-bottom: 3px solid transparent;
-            padding: 0.2rem 0;
-        }
-
-        nav a:hover, nav a:focus {
-            border-bottom-color: var(--primary);
-            outline: none;
-        }
-
-        /* Sekce */
-        .hero { padding: clamp(3rem, 8vh, 5rem) 0 2rem; }
-        section { padding: 3rem 0; }
-
-        .moto-eyebrow {
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-
-        h1 { 
-            font-size: clamp(2.2rem, 6vw, 3.5rem); 
-            margin: 0 0 1.5rem 0; 
-            line-height: 1.1;
-        }
-
-        .lead {
-            font-size: clamp(1.2rem, 3vw, 1.5rem);
-            color: var(--text-sec);
-            max-width: 40ch;
-            margin-bottom: 2rem;
-        }
-
-        h2 { 
-            font-size: 2.2rem; 
-            margin: 0 0 1.5rem 0; 
-            border-bottom: 3px solid var(--text); 
-            padding-bottom: 0.5rem; 
-            display: inline-block;
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            padding: clamp(1.5rem, 5vw, 2.5rem);
-            border: 2px solid var(--text);
-            box-shadow: 8px 8px 0px var(--text);
-            margin: 2.5rem 0;
-        }
-
-        .badge {
-            background: var(--text);
-            color: #FFF;
-            padding: 0.4rem 0.8rem;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            font-weight: bold;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-
-        .tech-info {
-            border-top: 1px solid #CCC;
-            padding-top: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: var(--text);
-            color: #FFF;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1.5rem;
-        }
-
-        .cta-button:hover { background: var(--primary); color: var(--text); }
-
-        footer {
-            margin-top: 4rem;
-            padding: 3rem 0;
-            border-top: 1px solid #CCC;
-            text-align: center;
-        }
-
-        /* Focus state */
-        a:focus {
-            outline: 4px solid var(--primary);
-            outline-offset: 4px;
-        }
-
-        @media (max-width: 650px) {
-            .nav-wrap { justify-content: center; text-align: center; }
-            h1, .moto-eyebrow, .lead { text-align: center; margin-left: auto; margin-right: auto; }
-            .project-card { box-shadow: 4px 4px 0px var(--text); }
-        }
-    </style>
+    <link rel="stylesheet" href="/assets/styles.css">
 </head>
 <body>
 
@@ -193,18 +34,27 @@
 
     <header>
         <div class="container nav-wrap">
-            <a href="/" class="logo" aria-label="Logo organizace VoxRox">
-                <svg width="50" height="50" viewBox="0 0 100 100" aria-hidden="true">
-                    <path d="M30 0L70 0L100 30V70L70 100H30L0 70V30L30 0Z" fill="#000000"/>
-                    <path d="M35 35H55C60 35 63 38 63 42C63 46 60 49 55 49H43V65H35V35ZM43 42V45H53C55 45 56 44 56 42C56 40 55 39 53 39H43V42ZM55 49L65 65H55L45 49H55Z" fill="#FFD700"/>
+            <a href="/" class="logo" aria-label="VoxRox — domů">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
                 </svg>
                 <span class="brand-name">VoxRox</span>
             </a>
-            <nav>
+            <nav aria-label="Hlavní">
                 <ul>
                     <li><a href="#vize">Vize</a></li>
                     <li><a href="#projekty">Projekty</a></li>
+                    <li><a href="#kontakt">Kontakt</a></li>
                     <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/" aria-current="true" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -228,7 +78,7 @@
                 <span class="badge">Ve vývoji (Alpha)</span>
                 <h3>VoxRox Mail</h3>
                 <p>Poštovní klient nové generace, který vrací e-mailovou komunikaci do rukou nevidomých a slabozrakých uživatelů. Namísto složitých grafických rozhraní nabízíme rychlost a stoprocentní kompatibilitu s asistivními technologiemi.</p>
-                
+
                 <ul role="list">
                     <li><strong>Standardy:</strong> Plná podpora IMAP a SMTP protokolů.</li>
                     <li><strong>Přístupnost:</strong> Optimalizováno pro NVDA, JAWS a VoiceOver.</li>
@@ -246,14 +96,21 @@
 
         <section id="kontakt">
             <h2>Zapojte se</h2>
-            <p>VoxRox tvoří lidé. Hledáme Java vývojáře pro robustní backend, kreativní tvůrce přístupného frontendu i testery se zrakovým postižením. Pokud chcete pomoci tvořit lepší digitální svět, ozvěte se nám skrze GitHub.</p>
+            <p>VoxRox tvoří lidé. Hledáme Java vývojáře pro robustní backend, kreativní tvůrce přístupného frontendu i testery se zrakovým postižením. Pokud chcete pomoci tvořit lepší digitální svět, ozvěte se nám.</p>
+            <p>Napište na <a href="mailto:info@voxrox.org">info@voxrox.org</a> nebo otevřete diskuzi na <a href="https://github.com/TheVoxRox">GitHubu</a>.</p>
         </section>
     </main>
 
     <footer>
         <div class="container">
+            <ul class="footer-nav">
+                <li><a href="#vize">Vize</a></li>
+                <li><a href="#projekty">Projekty</a></li>
+                <li><a href="/privacy/">Zásady soukromí</a></li>
+                <li><a href="/support/">Podpora</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
             <p>&copy; 2026 VoxRox • Vyvíjeno pro inkluzivní budoucnost.</p>
-            <p><small>English version coming soon</small></p>
         </div>
     </footer>
 
