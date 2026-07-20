@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-06-24 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+        <p class="doc-meta">Verze 2026-07-20 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
 
         <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), a kromě kontroly dostupných aktualizací na GitHubu (viz „Jaká data putují po síti").</p>
 
@@ -99,7 +99,7 @@
         <ol>
             <li><strong>Připojení k vašemu e-mailovému serveru (IMAP a SMTP)</strong> — stahování pošty, odesílání, synchronizace složek. Kam přesně se aplikace připojuje záleží na účtu, který přidáte (Gmail, Outlook, Seznam, vlastní server).</li>
             <li><strong>OAuth přihlášení (Google, Microsoft)</strong> — pokud zvolíte tento způsob přihlášení místo aplikačního hesla. Aplikace otevře váš výchozí prohlížeč na přihlašovací stránce poskytovatele, obdrží access token + refresh token a uloží je lokálně (šifrované, viz výše). Pravidelně si od poskytovatele bere nový access token přes refresh token.</li>
-            <li><strong>Aktualizace aplikace</strong> (Tauri updater) — aplikace se periodicky připojuje na <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code>, aby zjistila, zda existuje novější podepsaná verze, a případně stáhla podepsaný instalátor. Při tomto požadavku GitHub (hosting releasů) dočasně uvidí ve svých server lozích vaši <strong>IP adresu</strong> a verzi, na kterou se dotazujete — stejně jako při jakémkoli jiném stažení z webu. Žádná jiná data se při kontrole aktualizací neodesílají.</li>
+            <li><strong>Aktualizace aplikace</strong> (Tauri updater) — aplikace se periodicky připojuje na <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code> (stabilní kanál), resp. na <code>https://github.com/TheVoxRox/mail/releases/download/beta/latest.json</code>, pokud si v Nastavení → O aplikaci zvolíte beta kanál, aby zjistila, zda existuje novější podepsaná verze, a případně stáhla podepsaný instalátor. Při tomto požadavku GitHub (hosting releasů) dočasně uvidí ve svých server lozích vaši <strong>IP adresu</strong> a verzi, na kterou se dotazujete — stejně jako při jakémkoli jiném stažení z webu. Žádná jiná data se při kontrole aktualizací neodesílají (volba kanálu zůstává uložená jen lokálně).</li>
         </ol>
         <p>Aplikace <strong>neposílá</strong> vaše e-maily, kontakty ani aktivitu na servery VoxRox ani na žádnou analytickou platformu třetí strany.</p>
 

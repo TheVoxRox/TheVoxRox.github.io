@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Privacy Policy — VoxRox Mail</h1>
-        <p class="doc-meta">Version 2026-06-24 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
+        <p class="doc-meta">Version 2026-07-20 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
 
         <p>VoxRox Mail is a desktop e-mail client for Windows. The application runs locally on your computer. Your e-mails, contacts, account credentials and logs stay on your device and are never sent to any VoxRox server or other third party — except those you choose yourself by adding an e-mail account (your e-mail provider, and optionally Google or Microsoft for OAuth login), and except the check for available updates on GitHub (see "What data leaves the device").</p>
 
@@ -99,7 +99,7 @@
         <ol>
             <li><strong>Connection to your e-mail server (IMAP and SMTP)</strong> — fetching mail, sending, folder synchronization. Where exactly the application connects depends on the account you add (Gmail, Outlook, Seznam, custom server).</li>
             <li><strong>OAuth login (Google, Microsoft)</strong> — if you choose this login method instead of an app password. The application opens your default browser on the provider's login page, receives an access token + refresh token, and stores them locally (encrypted, see above). It periodically obtains a new access token from the provider using the refresh token.</li>
-            <li><strong>Application updates</strong> (Tauri updater) — the application periodically connects to <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code> to check whether a newer signed release exists, and downloads the signed installer if so. During this request GitHub (the release host) temporarily sees your <strong>IP address</strong> and the version you are querying in its server logs — just like any other download from the web. No other data is sent during the update check.</li>
+            <li><strong>Application updates</strong> (Tauri updater) — the application periodically connects to <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code> (stable channel), or to <code>https://github.com/TheVoxRox/mail/releases/download/beta/latest.json</code> if you opt into the beta channel in Settings → About, to check whether a newer signed release exists, and downloads the signed installer if so. During this request GitHub (the release host) temporarily sees your <strong>IP address</strong> and the version you are querying in its server logs — just like any other download from the web. No other data is sent during the update check (the channel choice is stored locally only).</li>
         </ol>
         <p>The application <strong>does not send</strong> your e-mails, contacts or activity to any VoxRox server or third-party analytics platform.</p>
 
