@@ -71,14 +71,15 @@
         <p>If we ask for it, you can manually export a diagnostic bundle (<code>GET /api/internal/diagnostic-dump</code>). It contains only <strong>masked</strong> e-mail addresses, account configuration (host, port, SSL), synchronization status and runtime metrics. It <strong>does not contain</strong> credentials, OAuth tokens, message bodies or subjects. See the <a href="/en/privacy/">Privacy Policy</a> for details.</p>
 
         <h2>Supported versions</h2>
-        <p>Only the latest released installer (distributed via the <a href="https://github.com/TheVoxRox/mail/releases">GitHub Releases</a> page) receives security fixes. Pre-release tags and unreleased commits are not supported.</p>
+        <p>Only the newest build on each update channel receives security fixes: on the stable channel the latest release published on the <a href="https://github.com/TheVoxRox/mail/releases">GitHub Releases</a> page, on the beta channel (opt-in via Settings → About) the latest beta prerelease. Fixes reach beta installs as the next beta or stable release, whichever ships first; the beta channel never lags behind stable. Older releases, superseded beta builds and unreleased commits are not supported.</p>
         <table>
             <thead>
                 <tr><th scope="col">Version</th><th scope="col">Supported</th></tr>
             </thead>
             <tbody>
-                <tr><td><code>latest</code></td><td>Yes — current release</td></tr>
-                <tr><td>Older</td><td>No — please update</td></tr>
+                <tr><td><code>latest</code> (stable channel)</td><td>Yes — current release</td></tr>
+                <tr><td>Latest beta prerelease (beta channel)</td><td>Yes — until the next beta or stable build</td></tr>
+                <tr><td>Older or superseded builds</td><td>No — please update</td></tr>
             </tbody>
         </table>
 

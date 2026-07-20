@@ -71,14 +71,15 @@
         <p>Pokud vás o to požádáme, můžete ručně exportovat diagnostický balíček (<code>GET /api/internal/diagnostic-dump</code>). Obsahuje pouze <strong>maskované</strong> e-mailové adresy, konfiguraci účtů (host, port, SSL), stav synchronizace a runtime metriky. <strong>Neobsahuje</strong> přihlašovací údaje, OAuth tokeny, obsah zpráv ani předměty. Detaily viz <a href="/privacy/">Zásady ochrany soukromí</a>.</p>
 
         <h2>Podporované verze</h2>
-        <p>Bezpečnostní opravy dostává pouze nejnovější vydaný instalátor (distribuovaný přes stránku <a href="https://github.com/TheVoxRox/mail/releases">GitHub Releases</a>). Předběžné tagy a nevydané commity podporované nejsou.</p>
+        <p>Bezpečnostní opravy dostává jen nejnovější build v každém kanálu aktualizací: ve stabilním kanálu nejnovější vydání na stránce <a href="https://github.com/TheVoxRox/mail/releases">GitHub Releases</a>, v beta kanálu (volitelný, Nastavení → O aplikaci) nejnovější beta předvydání. Opravy se k beta instalacím dostanou jako další beta, nebo stabilní vydání — podle toho, co vyjde dřív; beta kanál za stabilním nikdy nezaostává. Starší vydání, překonané beta buildy a nevydané commity podporované nejsou.</p>
         <table>
             <thead>
                 <tr><th scope="col">Verze</th><th scope="col">Podpora</th></tr>
             </thead>
             <tbody>
-                <tr><td><code>latest</code></td><td>Ano — aktuální vydání</td></tr>
-                <tr><td>Starší</td><td>Ne — aktualizujte prosím</td></tr>
+                <tr><td><code>latest</code> (stabilní kanál)</td><td>Ano — aktuální vydání</td></tr>
+                <tr><td>Nejnovější beta předvydání (beta kanál)</td><td>Ano — dokud ho nenahradí další beta či stabilní build</td></tr>
+                <tr><td>Starší / překonané buildy</td><td>Ne — aktualizujte prosím</td></tr>
             </tbody>
         </table>
 
