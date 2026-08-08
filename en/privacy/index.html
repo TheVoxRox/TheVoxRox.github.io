@@ -52,9 +52,9 @@
 
     <main class="container prose" id="main-content">
         <h1>Privacy Policy — VoxRox Mail</h1>
-        <p class="doc-meta">Version 2026-07-20 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
+        <p class="doc-meta">Version 2026-08-08 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
 
-        <p>VoxRox Mail is a desktop e-mail client for Windows. The application runs locally on your computer. Your e-mails, contacts, account credentials and logs stay on your device and are never sent to any VoxRox server or other third party — except those you choose yourself by adding an e-mail account (your e-mail provider, and optionally Google or Microsoft for OAuth login), and except the check for available updates on GitHub (see "What data leaves the device").</p>
+        <p>VoxRox Mail is a desktop e-mail client for Windows. The application runs locally on your computer. Your e-mails, contacts, account credentials and logs stay on your device and are never sent to any VoxRox server or other third party — except those you choose yourself by adding an e-mail account (your e-mail provider, and optionally Google or Microsoft for OAuth login), except the check for available updates on GitHub, and except remote images in a message whose loading you explicitly allow (both: see "What data leaves the device").</p>
 
         <p>VoxRox does not operate a backend server for this application, does not store your data in the cloud, and does not collect telemetry, analytics or crash reports against an external endpoint.</p>
 
@@ -74,7 +74,7 @@
                 <tr><td><code>crypto.bin</code></td><td>Local encryption key for credentials (created on first start).</td></tr>
                 <tr><td><code>crypto.fingerprint</code></td><td>Fingerprint of the key, used to detect swap or corruption of <code>crypto.bin</code>.</td></tr>
                 <tr><td><code>session.json</code></td><td>Port and internal API key of the currently running backend (rewritten on every start).</td></tr>
-                <tr><td><code>db/mail.db</code></td><td>SQLite database: accounts, contacts, message headers and bodies, sync state.</td></tr>
+                <tr><td><code>db/mail.db</code></td><td>SQLite database: accounts, contacts, message headers and bodies, sync state, the list of senders allowed to load remote images, and correspondence history (addresses from sent and received mail) for address autocomplete.</td></tr>
                 <tr><td><code>db/mail.db.backup-pre-v*</code></td><td>DB snapshot taken before every schema migration (3 most recent kept).</td></tr>
                 <tr><td><code>attachments/</code></td><td>Local copies of attachments downloaded from the server.</td></tr>
                 <tr><td><code>logs/mail.log</code></td><td>Application log (rotates, max 7 files × 10 MB, total ~100 MB).</td></tr>
@@ -100,6 +100,7 @@
             <li><strong>Connection to your e-mail server (IMAP and SMTP)</strong> — fetching mail, sending, folder synchronization. Where exactly the application connects depends on the account you add (Gmail, Outlook, Seznam, custom server).</li>
             <li><strong>OAuth login (Google, Microsoft)</strong> — if you choose this login method instead of an app password. The application opens your default browser on the provider's login page, receives an access token + refresh token, and stores them locally (encrypted, see above). It periodically obtains a new access token from the provider using the refresh token.</li>
             <li><strong>Application updates</strong> (Tauri updater) — the application periodically connects to <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code> (stable channel), or to <code>https://github.com/TheVoxRox/mail/releases/download/beta/latest.json</code> if you opt into the beta channel in Settings → About, to check whether a newer signed release exists, and downloads the signed installer if so. During this request GitHub (the release host) temporarily sees your <strong>IP address</strong> and the version you are querying in its server logs — just like any other download from the web. No other data is sent during the update check (the channel choice is stored locally only).</li>
+            <li><strong>Loading remote images in a message — only when you allow it.</strong> Images referenced by an HTML message are <strong>not fetched</strong> by default; the application blocks them and shows "Remote images blocked" above the message. Only when you click <strong>"Load images"</strong> (once, for that message) or <strong>"Always from this sender"</strong> (permanently — the trusted-sender list is stored locally in the database) does the application fetch the images directly from the servers the message points at. Those servers are <strong>not under VoxRox's control</strong> — they belong to the sender or their mailing platform. On such a request the operator of that server sees your <strong>IP address</strong> and the time of loading, and can infer that you opened the message (a tracking pixel). That is exactly why remote images stay blocked until you allow them.</li>
         </ol>
         <p>The application <strong>does not send</strong> your e-mails, contacts or activity to any VoxRox server or third-party analytics platform.</p>
 
@@ -114,6 +115,7 @@
             <li><strong>Google</strong> — if you use Gmail with OAuth (<a href="https://policies.google.com/privacy">policies.google.com/privacy</a>).</li>
             <li><strong>Microsoft</strong> — if you use Outlook / Hotmail / Live with OAuth (<a href="https://privacy.microsoft.com/">privacy.microsoft.com</a>).</li>
             <li><strong>GitHub</strong> — updates are distributed via GitHub Releases, so the application periodically checks for a new version against GitHub (see "What data leaves the device" above). GitHub sees your IP address and the queried version (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub Privacy Statement</a>).</li>
+            <li><strong>Servers hosting remote images in messages</strong> — they only come into play when you allow image loading for a particular message or sender (see "What data leaves the device" above). Who operates such a server and under what policy is determined by the sender of the message; VoxRox has no control over it.</li>
         </ul>
         <p>VoxRox has no data-sharing agreement with any of these providers regarding your data. Communication happens directly between your computer and the respective server.</p>
 
