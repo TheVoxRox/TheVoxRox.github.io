@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Privacy Policy — VoxRox Mail</h1>
-        <p class="doc-meta">Version 2026-08-08 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
+        <p class="doc-meta">Version 2026-08-12 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
 
         <p>VoxRox Mail is a desktop e-mail client for Windows. The application runs locally on your computer. Your e-mails, contacts, account credentials and logs stay on your device and are never sent to any VoxRox server or other third party — except those you choose yourself by adding an e-mail account (your e-mail provider, and optionally Google or Microsoft for OAuth login), except the check for available updates on GitHub, and except remote images in a message whose loading you explicitly allow (both: see "What data leaves the device").</p>
 
@@ -104,6 +104,9 @@
         </ol>
         <p>The application <strong>does not send</strong> your e-mails, contacts or activity to any VoxRox server or third-party analytics platform.</p>
 
+        <h3>When that traffic happens</h3>
+        <p>Points 1 to 3 above continue after you close the window. By default closing the window does not quit the application — it hides it in the notification area so it can keep fetching mail and announcing new messages, which means it is still running and still connecting to your e-mail server at regular intervals. Quit it from the notification area icon menu (<strong>Quit</strong>). If you want closing the window to actually quit, switch that in <strong>Settings → Appearance → Closing the window</strong>; the network traffic then stops with the application.</p>
+
         <h3>Diagnostic reports from the client</h3>
         <p>The frontend is prepared to send technical errors (JavaScript exceptions, failed API calls) to the <strong>local</strong> backend endpoint <code>POST /api/internal/client-errors</code>, which runs on 127.0.0.1 on your computer. This endpoint is not implemented yet — on the first failed attempt (HTTP 404) the frontend disables reporting. Once it exists, it will still be a loopback write to your local logs only; the reports <strong>never leave your device</strong> and are not sent to VoxRox or any third party.</p>
         <p>If you contact support and provide a manually exported diagnostic bundle (<code>GET /api/internal/diagnostic-dump</code>), that bundle contains only masked e-mail addresses, account configuration (host, port, SSL), synchronization status and runtime metrics. It <strong>does not contain</strong> credentials, OAuth tokens, message bodies or subjects.</p>
@@ -121,7 +124,7 @@
 
         <h2>Your rights and controls</h2>
         <ul>
-            <li><strong>Remove an account from the application</strong> — delete the account in Settings. This cascade-deletes the account record, credentials, sync state, messages and contacts from the local database.</li>
+            <li><strong>Remove an account from the application</strong> — delete the account in Settings. This cascade-deletes the account record, credentials, sync state, messages and correspondence history from the local database. <strong>Contacts stay</strong> — the address book belongs to the application rather than to one account, and disconnecting a mailbox is no reason to lose addresses you entered or imported by hand. Delete them individually or in bulk under Contacts; removing everything is covered by "Complete data removal" below.</li>
             <li><strong>Revoke OAuth access</strong> at the provider:
                 <ul>
                     <li>Google: <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> → find "VoxRox Mail" → Remove access.</li>
