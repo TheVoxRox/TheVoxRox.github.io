@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Privacy Policy — VoxRox Mail</h1>
-        <p class="doc-meta">Version 2026-08-12 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
+        <p class="doc-meta">Version 2026-08-18 (draft, pre-first-release). This version is preliminary and has not yet been reviewed by a lawyer — see "Open items" at the bottom.</p>
 
         <p>VoxRox Mail is a desktop e-mail client for Windows. The application runs locally on your computer. Your e-mails, contacts, account credentials and logs stay on your device and are never sent to any VoxRox server or other third party — except those you choose yourself by adding an e-mail account (your e-mail provider, and optionally Google or Microsoft for OAuth login), except the check for available updates on GitHub, and except remote images in a message whose loading you explicitly allow (both: see "What data leaves the device").</p>
 
@@ -105,7 +105,7 @@
         <p>The application <strong>does not send</strong> your e-mails, contacts or activity to any VoxRox server or third-party analytics platform.</p>
 
         <h3>When that traffic happens</h3>
-        <p>Points 1 to 3 above continue after you close the window. By default closing the window does not quit the application — it hides it in the notification area so it can keep fetching mail and announcing new messages, which means it is still running and still connecting to your e-mail server at regular intervals. Quit it from the notification area icon menu (<strong>Quit</strong>). If you want closing the window to actually quit, switch that in <strong>Settings → Appearance → Closing the window</strong>; the network traffic then stops with the application.</p>
+        <p>By default closing the window quits the application, and the network traffic stops with it. If you switch <strong>Settings → Appearance → Closing the window</strong> to "keep running in the notification area", points 1 to 3 above continue after you close the window: the application is only hidden, so it can keep fetching mail and announcing new messages, which means it is still running and still connecting to your e-mail server at regular intervals. Quit it from the notification area icon menu (<strong>Quit</strong>).</p>
 
         <h3>Diagnostic reports from the client</h3>
         <p>The frontend is prepared to send technical errors (JavaScript exceptions, failed API calls) to the <strong>local</strong> backend endpoint <code>POST /api/internal/client-errors</code>, which runs on 127.0.0.1 on your computer. This endpoint is not implemented yet — on the first failed attempt (HTTP 404) the frontend disables reporting. Once it exists, it will still be a loopback write to your local logs only; the reports <strong>never leave your device</strong> and are not sent to VoxRox or any third party.</p>

@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-08-12 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+        <p class="doc-meta">Verze 2026-08-18 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
 
         <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti").</p>
 
@@ -105,7 +105,7 @@
         <p>Aplikace <strong>neposílá</strong> vaše e-maily, kontakty ani aktivitu na servery VoxRox ani na žádnou analytickou platformu třetí strany.</p>
 
         <h3>Kdy komunikace probíhá</h3>
-        <p>Body 1 až 3 výše probíhají i po zavření okna. Ve výchozím nastavení se aplikace zavřením okna neukončí, jen skryje do oznamovací oblasti, aby dál stahovala poštu a hlásila nové zprávy — pořád tedy běží a pořád se v pravidelných intervalech připojuje k vašemu e-mailovému serveru. Ukončit ji jde přes nabídku ikony v oznamovací oblasti (<strong>Ukončit</strong>). Pokud chcete, aby zavření okna aplikaci opravdu ukončilo, přepněte to v <strong>Nastavení → Vzhled → Zavření okna</strong>; síťová komunikace pak skončí spolu s ní.</p>
+        <p>Ve výchozím nastavení zavření okna aplikaci ukončí a síťová komunikace končí spolu s ní. Přepnete-li <strong>Nastavení → Vzhled → Zavření okna</strong> na „nechat běžet v oznamovací oblasti", probíhají body 1 až 3 výše i po zavření okna: aplikace se jen skryje, aby dál stahovala poštu a hlásila nové zprávy — pořád tedy běží a pořád se v pravidelných intervalech připojuje k vašemu e-mailovému serveru. Ukončit ji pak jde přes nabídku ikony v oznamovací oblasti (<strong>Ukončit</strong>).</p>
 
         <h3>Diagnostické reporty z klienta</h3>
         <p>Frontend je připravený posílat technické chyby (JavaScript exceptions, neúspěšná API volání) na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači. Tento endpoint zatím není implementovaný — frontend po prvním neúspěšném pokusu (HTTP 404) reportování sám vypne. Až vznikne, půjde stále jen o zápis přes loopback do lokálních logů; reporty <strong>nikdy neopustí vaše zařízení</strong> a neodesílají se VoxRoxu ani žádné třetí straně.</p>
