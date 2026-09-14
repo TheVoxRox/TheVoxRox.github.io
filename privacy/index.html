@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-09-13(návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+        <p class="doc-meta">Verze 2026-09-14(návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
 
         <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti").</p>
 
@@ -82,6 +82,7 @@
                 <tr><td><code>tmp/</code></td><td>Dočasné soubory (mažou se automaticky).</td></tr>
             </tbody>
         </table>
+        <p>Mimo tento adresář aplikace zapisuje jedinou hodnotu do registru Windows, <code>HKEY_CURRENT_USER\Software\VoxRox\Mail\UpdateStartupCheck</code>: vaši odpověď na otázku, zda při spuštění kontrolovat aktualizace (bod 3 níže). Zapisuje ji instalátor a přepínač v Nastavení → O aplikaci.</p>
 
         <h3>Co je šifrované</h3>
         <ul>
@@ -99,7 +100,7 @@
         <ol>
             <li><strong>Připojení k vašemu e-mailovému serveru (IMAP a SMTP)</strong> — stahování pošty, odesílání, synchronizace složek. Kam přesně se aplikace připojuje záleží na účtu, který přidáte (Gmail, Outlook, Seznam, vlastní server).</li>
             <li><strong>OAuth přihlášení (Google, Microsoft)</strong> — pokud zvolíte tento způsob přihlášení místo aplikačního hesla. Aplikace otevře váš výchozí prohlížeč na přihlašovací stránce poskytovatele, obdrží access token + refresh token a uloží je lokálně (šifrované, viz výše). Pravidelně si od poskytovatele bere nový access token přes refresh token.</li>
-            <li><strong>Aktualizace aplikace</strong> (Tauri updater) — aplikace se <strong>při spuštění</strong> připojuje na <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code> (stabilní kanál), resp. na <code>https://github.com/TheVoxRox/mail/releases/download/beta/latest.json</code>, pokud si v Nastavení → O aplikaci zvolíte beta kanál, aby zjistila, zda existuje novější podepsaná verze, a případně stáhla podepsaný instalátor. <strong>Za běhu se už sama znovu neptá</strong> — další dotaz proběhne až při příštím spuštění, nebo když kontrolu sami vyvoláte v Nastavení → O aplikaci. Tamtéž můžete kontrolu při spuštění vypnout (volba „Kontrolovat aktualizace při spuštění aplikace"); aplikace se pak ke GitHubu připojí jen tehdy, když kontrolu vyvoláte sami. Při tomto požadavku GitHub (hosting releasů) dočasně uvidí ve svých server lozích vaši <strong>IP adresu</strong> a verzi, na kterou se dotazujete — stejně jako při jakémkoli jiném stažení z webu. Žádná jiná data se při kontrole aktualizací neodesílají (volba kanálu zůstává uložená jen lokálně).</li>
+            <li><strong>Aktualizace aplikace</strong> (Tauri updater) — aplikace se <strong>při spuštění</strong> připojuje na <code>https://github.com/TheVoxRox/mail/releases/latest/download/latest.json</code> (stabilní kanál), resp. na <code>https://github.com/TheVoxRox/mail/releases/download/beta/latest.json</code>, pokud si v Nastavení → O aplikaci zvolíte beta kanál, aby zjistila, zda existuje novější podepsaná verze, a případně stáhla podepsaný instalátor. <strong>Za běhu se už sama znovu neptá</strong> — další dotaz proběhne až při příštím spuštění, nebo když kontrolu sami vyvoláte v Nastavení → O aplikaci. Tamtéž můžete kontrolu při spuštění vypnout (volba „Kontrolovat aktualizace při spuštění aplikace"); aplikace se pak ke GitHubu připojí jen tehdy, když kontrolu vyvoláte sami. Stejnou otázku položí už instalátor na stránce Soukromí; tichá instalace se neptá a kontrolu nechá zapnutou. Při tomto požadavku GitHub (hosting releasů) dočasně uvidí ve svých server lozích vaši <strong>IP adresu</strong> a verzi, na kterou se dotazujete — stejně jako při jakémkoli jiném stažení z webu. Žádná jiná data se při kontrole aktualizací neodesílají (volba kanálu zůstává uložená jen lokálně).</li>
             <li><strong>Načtení vzdálených obrázků ve zprávě — jen když to sami povolíte.</strong> Obrázky odkazované z HTML zprávy se ve výchozím stavu <strong>nestahují</strong>; aplikace je zablokuje a nad zprávou zobrazí „Vzdálené obrázky blokovány". Teprve když kliknete na <strong>„Načíst obrázky"</strong> (jednorázově pro danou zprávu), nebo na <strong>„Vždy od tohoto odesílatele"</strong> (trvale, seznam důvěryhodných odesílatelů se ukládá lokálně v databázi), stáhne aplikace obrázky přímo ze serverů, na které zpráva odkazuje. Ty <strong>nejsou pod kontrolou VoxRoxu</strong> — jsou to servery odesílatele nebo jeho rozesílací platformy. Při stažení uvidí provozovatel takového serveru vaši <strong>IP adresu</strong> a čas načtení a může z toho odvodit, že jste zprávu otevřeli (tzv. sledovací pixel). Právě proto jsou vzdálené obrázky blokované, dokud je nepovolíte.</li>
         </ol>
         <p>Aplikace <strong>neposílá</strong> vaše e-maily, kontakty ani aktivitu na servery VoxRox ani na žádnou analytickou platformu třetí strany.</p>
@@ -171,6 +172,7 @@
                 <li><a href="/">Domů</a></li>
                 <li><a href="/privacy/" aria-current="page">Zásady soukromí</a></li>
                 <li><a href="/support/">Podpora</a></li>
+                <li><a href="/code-signing/" lang="en">Code signing policy</a></li>
                 <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
             </ul>
             <p>&copy; 2026 VoxRox • Vyvíjeno pro inkluzivní budoucnost.</p>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code signing policy — VoxRox Mail</title>
+    <meta name="description" content="Code signing policy for VoxRox Mail: what gets signed, who approves signing, and what the application sends over the network.">
+
+    <link rel="canonical" href="https://voxrox.org/en/code-signing/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/code-signing/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/code-signing/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/code-signing/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <header>
+        <div class="container nav-wrap">
+            <a href="/en/" class="logo" aria-label="VoxRox — home">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
+                </svg>
+                <span class="brand-name">VoxRox</span>
+            </a>
+            <nav aria-label="Main">
+                <ul>
+                    <li><a href="/en/#vision">Vision</a></li>
+                    <li><a href="/en/#projects">Projects</a></li>
+                    <li><a href="/en/privacy/">Privacy</a></li>
+                    <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/code-signing/" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/code-signing/" aria-current="true" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container prose" id="main-content">
+        <h1>Code signing policy</h1>
+        <p class="doc-meta">VoxRox Mail. This page mirrors <a href="https://github.com/TheVoxRox/mail/blob/main/CODE_SIGNING_POLICY.md">CODE_SIGNING_POLICY.md</a> in the project repository.</p>
+
+        <div class="note">
+            <p><strong>Not in effect yet.</strong> VoxRox Mail releases currently ship without an Authenticode signature. This is the policy the project will follow once <a href="https://signpath.org/">SignPath Foundation</a> accepts it for free code signing, and it is published ahead of the application because the application asks for it. Until this notice is removed, nothing below describes a binary that has shipped.</p>
+        </div>
+
+        <p>Free code signing provided by <a href="https://about.signpath.io/">SignPath.io</a>, certificate by <a href="https://signpath.org/">SignPath Foundation</a>.</p>
+
+        <h2>What gets signed</h2>
+        <p>Only files built from the <a href="https://github.com/TheVoxRox/mail">TheVoxRox/mail</a> repository by its <a href="https://github.com/TheVoxRox/mail/blob/main/.github/workflows/windows-signed-release.yml">Windows Signed Release</a> workflow:</p>
+        <ul>
+            <li>the installer, <code>voxrox-mail-&lt;version&gt;-windows-x64-setup.exe</code>;</li>
+            <li>the desktop shell, <code>app.exe</code>;</li>
+            <li>the backend launcher, <code>mail.exe</code>.</li>
+        </ul>
+        <p>The workflow runs on a GitHub-hosted runner, builds from a version tag, refuses to run when that tag does not name the commit it builds, and records build provenance for the installer. Nothing built anywhere else is signed: not a local build, not a build of a fork, not a build of a pull request. Third-party binaries that ship unchanged inside the installer, such as the bundled Java runtime, are not signed by this project.</p>
+        <p>Every signed file names itself <code>VoxRox Mail</code> in its version resource and carries the version number of the release it belongs to.</p>
+
+        <h2>Team roles</h2>
+        <p>The project has one maintainer, who holds every role:</p>
+        <table>
+            <thead>
+                <tr><th scope="col">Role</th><th scope="col">Members</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Committers and reviewers</td><td><a href="https://github.com/Luke-Lacina">@Luke-Lacina</a></td></tr>
+                <tr><td>Approvers</td><td><a href="https://github.com/Luke-Lacina">@Luke-Lacina</a></td></tr>
+            </tbody>
+        </table>
+        <p>Changes reach <code>main</code> through pull requests. A change from anyone else, dependency updates opened by Dependabot included, is reviewed by the maintainer before it merges, and every signing request is approved by hand. Every team member is required to use multi-factor authentication for GitHub and for SignPath.</p>
+
+        <h2>Privacy</h2>
+        <p>The application sends information to other networked systems only in the cases the <a href="/en/privacy/">privacy policy</a> lists: the mail servers and sign-in providers the user adds, remote images in a message the user chooses to load, and a check for updates on GitHub at startup. The installer shows this summary with a link to the privacy policy before it installs anything, and asks whether the check may run; the answer can be changed later in Settings → About. The application collects no telemetry, analytics or crash reports.</p>
+
+        <h2>Reporting a problem</h2>
+        <p>A signed file this policy does not cover, or one that behaves differently from what this page describes, is a security issue: report it by e-mail to <a href="mailto:info@voxrox.org">info@voxrox.org</a> as the <a href="/en/support/">Support</a> page describes, not in the public issue tracker.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/privacy/">Privacy Policy</a></li>
+                <li><a href="/en/support/">Support</a></li>
+                <li><a href="/en/code-signing/" aria-current="page">Code signing policy</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
+            <p>&copy; 2026 VoxRox • Built for an inclusive future.</p>
+        </div>
+    </footer>
+
+</body>
+</html>

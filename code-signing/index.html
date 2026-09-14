@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zásady podepisování kódu (Code signing policy) — VoxRox Mail</title>
+    <meta name="description" content="Zásady podepisování kódu VoxRox Mail: co se podepisuje, kdo podpis schvaluje a co aplikace posílá po síti.">
+
+    <link rel="canonical" href="https://voxrox.org/code-signing/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/code-signing/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/code-signing/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/code-signing/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+    <meta name="robots" content="index, follow">
+
+    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Přeskočit na obsah</a>
+
+    <header>
+        <div class="container nav-wrap">
+            <a href="/" class="logo" aria-label="VoxRox — domů">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
+                </svg>
+                <span class="brand-name">VoxRox</span>
+            </a>
+            <nav aria-label="Hlavní">
+                <ul>
+                    <li><a href="/#vize">Vize</a></li>
+                    <li><a href="/#projekty">Projekty</a></li>
+                    <li><a href="/privacy/">Soukromí</a></li>
+                    <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/code-signing/" aria-current="true" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/code-signing/" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container prose" id="main-content">
+        <h1>Zásady podepisování kódu <span lang="en">(Code signing policy)</span></h1>
+        <p class="doc-meta">VoxRox Mail. Stránka odpovídá souboru <a href="https://github.com/TheVoxRox/mail/blob/main/CODE_SIGNING_POLICY.md">CODE_SIGNING_POLICY.md</a> v repozitáři projektu.</p>
+
+        <div class="note">
+            <p><strong>Zatím neplatí.</strong> Vydání VoxRox Mail se zatím dodávají bez podpisu Authenticode. Toto jsou zásady, kterými se projekt bude řídit, jakmile ho <a href="https://signpath.org/">SignPath Foundation</a> přijme do programu bezplatného podepisování kódu. Zveřejňujeme je předem, protože je žádost o přijetí vyžaduje. Dokud tato poznámka nezmizí, nic z níže uvedeného nepopisuje vydaný soubor.</p>
+        </div>
+
+        <p lang="en">Free code signing provided by <a href="https://about.signpath.io/">SignPath.io</a>, certificate by <a href="https://signpath.org/">SignPath Foundation</a>.</p>
+        <p>Bezplatné podepisování kódu zajišťuje SignPath.io, certifikát vydává SignPath Foundation.</p>
+
+        <h2>Co se podepisuje</h2>
+        <p>Jen soubory, které z repozitáře <a href="https://github.com/TheVoxRox/mail">TheVoxRox/mail</a> sestaví jeho workflow <a href="https://github.com/TheVoxRox/mail/blob/main/.github/workflows/windows-signed-release.yml">Windows Signed Release</a>:</p>
+        <ul>
+            <li>instalátor, <code>voxrox-mail-&lt;verze&gt;-windows-x64-setup.exe</code>;</li>
+            <li>desktopová aplikace, <code>app.exe</code>;</li>
+            <li>spouštěč backendu, <code>mail.exe</code>.</li>
+        </ul>
+        <p>Workflow běží na runneru hostovaném GitHubem, staví z tagu verze, odmítne běžet, když tag neukazuje na commit, který staví, a k instalátoru zaznamená původ buildu (build provenance). Nic, co vzniklo jinde, se nepodepisuje: ani lokální build, ani build forku, ani build pull requestu. Binárky třetích stran, které instalátor nese beze změny, například přibalené běhové prostředí Javy, tento projekt nepodepisuje.</p>
+        <p>Každý podepsaný soubor se ve svých údajích o verzi jmenuje <code>VoxRox Mail</code> a nese číslo verze vydání, ke kterému patří.</p>
+
+        <h2>Role v týmu</h2>
+        <p>Projekt má jednoho správce, který zastává všechny role:</p>
+        <table>
+            <thead>
+                <tr><th scope="col">Role</th><th scope="col">Členové</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Autoři a revidující <span lang="en">(Committers and reviewers)</span></td><td><a href="https://github.com/Luke-Lacina">@Luke-Lacina</a></td></tr>
+                <tr><td>Schvalovatelé <span lang="en">(Approvers)</span></td><td><a href="https://github.com/Luke-Lacina">@Luke-Lacina</a></td></tr>
+            </tbody>
+        </table>
+        <p>Změny se do větve <code>main</code> dostávají přes pull requesty. Změnu od kohokoli jiného, včetně aktualizací závislostí od Dependabotu, správce před sloučením zreviduje a každou žádost o podpis schvaluje ručně. Každý člen týmu musí pro GitHub i pro SignPath používat vícefázové ověření.</p>
+
+        <h2>Soukromí</h2>
+        <p>Aplikace posílá informace jiným systémům v síti jen v případech, které uvádějí <a href="/privacy/">zásady ochrany soukromí</a>: poštovní servery a poskytovatelé přihlášení, které uživatel přidá, vzdálené obrázky ve zprávě, které se uživatel rozhodne načíst, a kontrola aktualizací na GitHubu při spuštění. Instalátor tento souhrn s odkazem na zásady ochrany soukromí ukáže dřív, než cokoli nainstaluje, a zeptá se, jestli smí kontrola běžet; odpověď jde později změnit v Nastavení → O aplikaci. Aplikace nesbírá telemetrii, analytiku ani hlášení o pádech.</p>
+
+        <h2>Nahlášení problému</h2>
+        <p>Podepsaný soubor, na který se tyto zásady nevztahují, nebo soubor, který se chová jinak, než popisuje tato stránka, je bezpečnostní problém: nahlaste ho e-mailem na <a href="mailto:info@voxrox.org">info@voxrox.org</a>, jak popisuje stránka <a href="/support/">Podpora</a>, ne ve veřejném issue trackeru.</p>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li><a href="/">Domů</a></li>
+                <li><a href="/privacy/">Zásady soukromí</a></li>
+                <li><a href="/support/">Podpora</a></li>
+                <li><a href="/code-signing/" aria-current="page" lang="en">Code signing policy</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
+            <p>&copy; 2026 VoxRox • Vyvíjeno pro inkluzivní budoucnost.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
