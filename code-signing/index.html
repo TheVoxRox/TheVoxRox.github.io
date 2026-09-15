@@ -65,8 +65,8 @@
         <p>Jen soubory, které z repozitáře <a href="https://github.com/TheVoxRox/mail">TheVoxRox/mail</a> sestaví jeho workflow <a href="https://github.com/TheVoxRox/mail/blob/main/.github/workflows/windows-signed-release.yml">Windows Signed Release</a>:</p>
         <ul>
             <li>instalátor, <code>voxrox-mail-&lt;verze&gt;-windows-x64-setup.exe</code>;</li>
-            <li>desktopová aplikace, <code>app.exe</code>;</li>
-            <li>spouštěč backendu, <code>mail.exe</code>.</li>
+            <li>desktopová aplikace, <code>voxrox-mail.exe</code>;</li>
+            <li>spouštěč backendu, <code>voxrox-mail-backend.exe</code>.</li>
         </ul>
         <p>Workflow běží na runneru hostovaném GitHubem, staví z tagu verze, odmítne běžet, když tag neukazuje na commit, který staví, a k instalátoru zaznamená původ buildu (build provenance). Nic, co vzniklo jinde, se nepodepisuje: ani lokální build, ani build forku, ani build pull requestu. Binárky třetích stran, které instalátor nese beze změny, například přibalené běhové prostředí Javy, tento projekt nepodepisuje.</p>
         <p>Každý podepsaný soubor se ve svých údajích o verzi jmenuje <code>VoxRox Mail</code> a nese číslo verze vydání, ke kterému patří.</p>

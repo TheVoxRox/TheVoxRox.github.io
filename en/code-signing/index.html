@@ -64,8 +64,8 @@
         <p>Only files built from the <a href="https://github.com/TheVoxRox/mail">TheVoxRox/mail</a> repository by its <a href="https://github.com/TheVoxRox/mail/blob/main/.github/workflows/windows-signed-release.yml">Windows Signed Release</a> workflow:</p>
         <ul>
             <li>the installer, <code>voxrox-mail-&lt;version&gt;-windows-x64-setup.exe</code>;</li>
-            <li>the desktop shell, <code>app.exe</code>;</li>
-            <li>the backend launcher, <code>mail.exe</code>.</li>
+            <li>the desktop shell, <code>voxrox-mail.exe</code>;</li>
+            <li>the backend launcher, <code>voxrox-mail-backend.exe</code>.</li>
         </ul>
         <p>The workflow runs on a GitHub-hosted runner, builds from a version tag, refuses to run when that tag does not name the commit it builds, and records build provenance for the installer. Nothing built anywhere else is signed: not a local build, not a build of a fork, not a build of a pull request. Third-party binaries that ship unchanged inside the installer, such as the bundled Java runtime, are not signed by this project.</p>
         <p>Every signed file names itself <code>VoxRox Mail</code> in its version resource and carries the version number of the release it belongs to.</p>
