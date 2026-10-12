@@ -52,9 +52,9 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-09-14(návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+        <p class="doc-meta">Verze 2026-10-12 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
 
-        <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti").</p>
+        <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti"). Logy opustí váš počítač jen tehdy, když sami pošlete diagnostický balíček (viz „Diagnostický balíček").</p>
 
         <p>VoxRox neprovozuje pro tuto aplikaci žádný backendový server, neukládá vaše data v cloudu a neshromažďuje telemetrii, analytiku ani crash reporty na externí endpoint.</p>
 
@@ -79,6 +79,7 @@
                 <tr><td><code>attachments/</code></td><td>Lokální kopie příloh stažených ze serveru.</td></tr>
                 <tr><td><code>logs/mail.log</code></td><td>Aplikační log (rotuje, max 7 souborů × 10 MB, celkem cca 100 MB).</td></tr>
                 <tr><td><code>logs/audit.log</code></td><td>Bezpečnostní/auditní log (retenční doba 365 dní, max cca 500 MB).</td></tr>
+                <tr><td><code>logs/mail-frontend.log</code></td><td>Log okna aplikace, včetně chybového výstupu a ukončení její služby (soubory po nejvýš 1 MB, vedle aktuálního se uchovávají dva starší).</td></tr>
                 <tr><td><code>tmp/</code></td><td>Dočasné soubory (mažou se automaticky).</td></tr>
             </tbody>
         </table>
@@ -109,8 +110,17 @@
         <p>Ve výchozím nastavení zavření okna aplikaci ukončí a síťová komunikace končí spolu s ní. Přepnete-li <strong>Nastavení → Vzhled → Zavření okna</strong> na „nechat běžet v oznamovací oblasti", probíhají body 1 a 2 výše i po zavření okna: aplikace se jen skryje, aby dál stahovala poštu a hlásila nové zprávy — pořád tedy běží a pořád se v pravidelných intervalech připojuje k vašemu e-mailovému serveru. <strong>Kontrola aktualizací (bod 3) mezi ně nepatří</strong> — ta proběhne nanejvýš jednou při spuštění (a vůbec ne, pokud ji máte vypnutou) a za běhu se neopakuje, ať je okno zavřené, nebo ne. Ukončit aplikaci pak jde přes nabídku ikony v oznamovací oblasti (<strong>Ukončit</strong>).</p>
 
         <h3>Diagnostické reporty z klienta</h3>
-        <p>Frontend je připravený posílat technické chyby (JavaScript exceptions, neúspěšná API volání) na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači. Tento endpoint zatím není implementovaný — frontend po prvním neúspěšném pokusu (HTTP 404) reportování sám vypne. Až vznikne, půjde stále jen o zápis přes loopback do lokálních logů; reporty <strong>nikdy neopustí vaše zařízení</strong> a neodesílají se VoxRoxu ani žádné třetí straně.</p>
-        <p>Pokud kontaktujete podporu a poskytnete jí ručně exportovaný diagnostický balíček (<code>GET /api/internal/diagnostic-dump</code>), tento balíček obsahuje pouze maskované e-mailové adresy, konfiguraci účtů (host, port, SSL), stav synchronizace a runtime metriky. <strong>Neobsahuje</strong> přihlašovací údaje, OAuth tokeny, obsah zpráv ani předměty.</p>
+        <p>Neošetřené chyby rozhraní (výjimky v JavaScriptu) posílá frontend na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači, a backend je zapíše do <code>logs/mail.log</code>. Záznam obsahuje typ a text chyby, výpis zásobníku, skript, ve kterém vznikla, a obecný tvar stránky, např. <code>/mail/[accountId]/[folderName]</code> — bez čísla účtu, názvu složky a zprávy. Do logu se zapíše nejvýš 20 záznamů za minutu. Záznamy <strong>neopouštějí vaše zařízení</strong> samy od sebe a neodesílají se VoxRoxu ani žádné třetí straně.</p>
+
+        <h3>Diagnostický balíček</h3>
+        <p>Tlačítkem <strong>Stáhnout diagnostiku</strong> (Nastavení → O aplikaci, případně obrazovka při potížích se spuštěním) si uložíte ZIP, který můžete poslat vývojářům, když hlásíte chybu. Nic se neodesílá automaticky: soubor se uloží do vašeho počítače a o tom, komu ho pošlete, rozhodujete vy.</p>
+        <p>Balíček obsahuje:</p>
+        <ul>
+            <li><strong>stav aplikace</strong>: verze, počty účtů, složek a zpráv, názvy synchronizovaných složek, stav synchronizace, poslední chybu každého účtu (jako kód, ne jako text), konfiguraci serverů účtů (host, port, SSL), maskované e-mailové adresy (<code>j***k@seznam.cz</code>), údaje o běhu (verze Javy a Windows, paměť, velikost databáze, volné místo na disku), časy spuštění a stav všech vláken aplikace;</li>
+            <li><strong>logy</strong> ze složky <code>logs/</code> (<code>mail.log</code>, <code>audit.log</code> a <code>mail-frontend.log</code> včetně starších souborů, nejvýš 24 MB textu, novější přednostně), tak jak jsou uložené ve vašem počítači. Obsahují tedy i názvy složek a účtů, cesty k souborům aplikace (s vaší domovskou složkou a jménem uživatele Windows) a technické texty chyb tak, jak je vrátil e-mailový server nebo knihovna, které mohou obsahovat například jméno odesílatele z hlavičky zprávy. Jako pojistka se v nich před uložením do ZIPu zamaskuje každá e-mailová adresa, kterou nezamaskovala už sama aplikace (typicky v textu chyby od serveru), a nahradí se tokeny a interní API klíč, které v logu být nemají.</li>
+        </ul>
+        <p>Balíček <strong>neobsahuje</strong> hesla, OAuth tokeny, obsah zpráv, předměty ani přílohy. Než ZIP pošlete, můžete ho otevřít a projít: logy v něm jsou obyčejné textové soubory. Pokud ho přikládáte k veřejnému hlášení (například na GitHubu), uvidí jeho obsah kdokoli.</p>
+        <p>Když se aplikace nespustí, diagnostiku stáhnout nejde, protože ji připravuje služba aplikace. Na obrazovce s chybou spuštění je proto také tlačítko <strong>Uložit logy</strong>: uloží do složky Stažené soubory ZIP se všemi soubory ze složky <code>logs/</code> (nejvýš 64 MB, novější přednostně), přesně tak, jak jsou na disku, a krátkou poznámku s verzí aplikace. Ani tento ZIP se nikam neodesílá sám.</p>
 
         <h2>Třetí strany</h2>
         <p>Pokud přidáte účet, vstupují do hry tito poskytovatelé:</p>
