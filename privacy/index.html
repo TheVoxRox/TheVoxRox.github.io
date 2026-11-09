@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-10-12 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+        <p class="doc-meta">Verze 2026-11-09 (návrh před prvním vydáním). Tato verze je předběžná a dosud neprošla právním review — viz „Otevřené body" na konci.</p>
 
         <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti"). Logy opustí váš počítač jen tehdy, když sami pošlete diagnostický balíček (viz „Diagnostický balíček").</p>
 
@@ -85,6 +85,9 @@
         </table>
         <p>Mimo tento adresář aplikace zapisuje jedinou hodnotu do registru Windows, <code>HKEY_CURRENT_USER\Software\VoxRox\Mail\UpdateStartupCheck</code>: vaši odpověď na otázku, zda při spuštění kontrolovat aktualizace (bod 3 níže). Zapisuje ji instalátor a přepínač v Nastavení → O aplikaci.</p>
 
+        <h3>Oznámení Windows o nové poště</h3>
+        <p>Když okno aplikace není aktivní nebo je skryté v oznamovací oblasti, ohlásí aplikace nově doručenou poštu (do Doručených a Hromadných) oznámením systému Windows. Oznámení obsahuje počet nových zpráv, adresu účtu a název složky — <strong>nikdy odesílatele ani předmět</strong>. Zobrazuje a uchovává ho Windows, ne aplikace: zůstane v centru oznámení Windows ve vašem uživatelském profilu, dokud ho nezavřete, a podle nastavení Windows se může ukázat i na zamykací obrazovce. Windows si také v registru vede vlastní záznam o nastavení oznámení této aplikace. Odebrání účtu ani odinstalace aplikace už zobrazená oznámení nesmaže; vymažete je v centru oznámení. Vypnout je jde v <strong>Nastavení → Vzhled → Oznámení Windows o nové poště</strong>, nebo v nastavení oznámení ve Windows.</p>
+
         <h3>Co je šifrované</h3>
         <ul>
             <li><strong>Hesla k IMAP/SMTP</strong> a <strong>OAuth tokeny</strong> (Google, Microsoft) jsou šifrované algoritmem AES-GCM s klíčem odvozeným z <code>crypto.bin</code>. Bez <code>crypto.bin</code> uloženého ve vašem profilu je nelze dešifrovat.</li>
@@ -107,7 +110,7 @@
         <p>Aplikace <strong>neposílá</strong> vaše e-maily, kontakty ani aktivitu na servery VoxRox ani na žádnou analytickou platformu třetí strany.</p>
 
         <h3>Kdy komunikace probíhá</h3>
-        <p>Ve výchozím nastavení zavření okna aplikaci ukončí a síťová komunikace končí spolu s ní. Přepnete-li <strong>Nastavení → Vzhled → Zavření okna</strong> na „nechat běžet v oznamovací oblasti", probíhají body 1 a 2 výše i po zavření okna: aplikace se jen skryje, aby dál stahovala poštu a hlásila nové zprávy — pořád tedy běží a pořád se v pravidelných intervalech připojuje k vašemu e-mailovému serveru. <strong>Kontrola aktualizací (bod 3) mezi ně nepatří</strong> — ta proběhne nanejvýš jednou při spuštění (a vůbec ne, pokud ji máte vypnutou) a za běhu se neopakuje, ať je okno zavřené, nebo ne. Ukončit aplikaci pak jde přes nabídku ikony v oznamovací oblasti (<strong>Ukončit</strong>).</p>
+        <p>Ve výchozím nastavení zavření okna aplikaci ukončí a síťová komunikace končí spolu s ní. Přepnete-li <strong>Nastavení → Vzhled → Zavření okna</strong> na „nechat běžet v oznamovací oblasti", probíhají body 1 a 2 výše i po zavření okna: aplikace se jen skryje, aby dál stahovala poštu a hlásila nové zprávy (oznámením Windows, viz „Oznámení Windows o nové poště" výše) — pořád tedy běží a pořád se v pravidelných intervalech připojuje k vašemu e-mailovému serveru. <strong>Kontrola aktualizací (bod 3) mezi ně nepatří</strong> — ta proběhne nanejvýš jednou při spuštění (a vůbec ne, pokud ji máte vypnutou) a za běhu se neopakuje, ať je okno zavřené, nebo ne. Ukončit aplikaci pak jde přes nabídku ikony v oznamovací oblasti (<strong>Ukončit</strong>).</p>
 
         <h3>Diagnostické reporty z klienta</h3>
         <p>Neošetřené chyby rozhraní (výjimky v JavaScriptu) posílá frontend na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači, a backend je zapíše do <code>logs/mail.log</code>. Záznam obsahuje typ a text chyby, výpis zásobníku, skript, ve kterém vznikla, a obecný tvar stránky, např. <code>/mail/[accountId]/[folderName]</code> — bez čísla účtu, názvu složky a zprávy. Do logu se zapíše nejvýš 20 záznamů za minutu. Záznamy <strong>neopouštějí vaše zařízení</strong> samy od sebe a neodesílají se VoxRoxu ani žádné třetí straně.</p>
@@ -142,7 +145,7 @@
                     <li>Microsoft: <a href="https://account.microsoft.com/privacy/app-access">account.microsoft.com/privacy/app-access</a> (osobní účty) nebo <a href="https://myapps.microsoft.com">myapps.microsoft.com</a> (firemní účty) → najít aplikaci podle Client ID → „Remove permission". Microsoft neimplementuje standardní revoke endpoint (RFC 7009), takže odvolání musíte provést u nich.</li>
                 </ul>
             </li>
-            <li><strong>Kompletní odstranění dat</strong> — odinstalujte aplikaci a poté <strong>ručně smažte</strong> adresář <code>%LOCALAPPDATA%\VoxRox\Mail\</code>. Instalátor data adresář záměrně nemaže (aby šlo bezpečně přeinstalovat bez ztráty pošty).</li>
+            <li><strong>Kompletní odstranění dat</strong> — odinstalujte aplikaci a poté <strong>ručně smažte</strong> adresář <code>%LOCALAPPDATA%\VoxRox\Mail\</code>. Instalátor data adresář záměrně nemaže (aby šlo bezpečně přeinstalovat bez ztráty pošty). Oznámení o nové poště, která už drží Windows, vymažte v centru oznámení.</li>
             <li><strong>Export dat</strong> — kontakty lze exportovat do vCard přes Nastavení &gt; Kontakty. Export celé databáze není ve verzi 0.x dostupný v UI; pokročilí uživatelé si mohou zkopírovat <code>db/mail.db</code> přímo a otevřít v jakémkoli SQLite prohlížeči (např. DB Browser for SQLite).</li>
             <li><strong>Přístup k logům</strong> — soubory v <code>logs/</code> jsou prostý text čitelný editorem.</li>
         </ul>
