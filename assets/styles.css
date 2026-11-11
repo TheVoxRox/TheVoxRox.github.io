@@ -208,6 +208,33 @@ h4 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
     color: #FFF;
 }
 
+/* The download comes first; following development is the quieter second choice. */
+.cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.cta-row .cta-button { margin-top: 0; }
+
+.cta-button.cta-secondary {
+    background: var(--card-bg);
+    color: var(--ink);
+}
+
+.cta-button.cta-secondary:hover, .cta-button.cta-secondary:focus {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #FFF;
+}
+
+.download {
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+    margin-top: 2rem;
+}
+
 /* --- Links (body copy) ---------------------------------------------------- */
 main a:not(.cta-button):not(.logo) {
     color: var(--accent-ink);
