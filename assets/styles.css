@@ -91,8 +91,9 @@ nav ul {
     padding: 0;
     margin: 0;
     display: flex;
+    flex-wrap: wrap;            /* WCAG 1.4.10: at 320 px the five items do not fit on one line */
     align-items: center;
-    gap: 1.5rem;
+    gap: 0.75rem 1.5rem;
 }
 
 nav a {
@@ -246,7 +247,10 @@ main a:not(.cta-button):not(.logo):hover {
 }
 
 /* --- Long-form content (privacy / support) -------------------------------- */
-.prose { padding-bottom: 2rem; }
+/* Paths, registry keys and URLs have no break point of their own; at 320 px
+   (WCAG 1.4.10) they pushed the page sideways. "anywhere" breaks a word only
+   when it cannot fit, and lets the table cells shrink with them. */
+.prose { padding-bottom: 2rem; overflow-wrap: anywhere; }
 .prose p, .prose li { max-width: 70ch; }
 .prose ul, .prose ol { padding-left: 1.5rem; }
 .prose li { margin-bottom: 0.5rem; }
