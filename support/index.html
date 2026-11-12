@@ -85,8 +85,12 @@
 
         <h2>Nahlášení bezpečnostního problému</h2>
         <div class="note">
-            <p><strong>Bezpečnostní problémy prosím nehlaste ve veřejném issue trackeru.</strong> Napište na <a href="mailto:info@voxrox.org">info@voxrox.org</a>. Každé hlášení považujeme za neveřejné, dokud nebude k dispozici oprava a vydání.</p>
+            <p><strong>Bezpečnostní problémy prosím nehlaste ve veřejném issue trackeru.</strong> Nahlaste je neveřejně, jednou ze dvou cest. Každé hlášení považujeme za neveřejné, dokud nebude k dispozici oprava a vydání.</p>
         </div>
+        <ul>
+            <li><strong>Neveřejné hlášení zranitelností na GitHubu</strong> (doporučeno): tlačítko <a href="https://github.com/TheVoxRox/mail/security/advisories/new">Report a vulnerability</a> na kartě Security repozitáře. Hlášení, komunikace o něm i oprava zůstanou pohromadě v jednom neveřejném konceptu bezpečnostního upozornění, dokud ho nezveřejníme.</li>
+            <li><strong>E-mail</strong> na <a href="mailto:info@voxrox.org">info@voxrox.org</a>, pokud účet na GitHubu nemáte nebo ho použít nechcete.</li>
+        </ul>
         <p>Do hlášení uveďte:</p>
         <ul>
             <li>Popis problému a jak ho reprodukovat.</li>
@@ -94,7 +98,7 @@
             <li>Operační systém, poskytovatele e-mailu a zda problém vyžaduje síťový přístup ke konkrétnímu serveru.</li>
             <li>Proof-of-concept, pokud nějaký máte (v libovolném formátu).</li>
         </ul>
-        <p>Potvrzení přijetí byste měli dostat <strong>do 7 kalendářních dnů</strong>. Výchozí lhůta pro zveřejnění je <strong>90 dní</strong> od prvního hlášení, po vzájemné dohodě ji lze prodloužit (např. pokud oprava vyžaduje delší nasazení).</p>
+        <p>Potvrzení přijetí byste měli dostat <strong>do 7 kalendářních dnů</strong>; pokud nepřijde, ozvěte se prosím druhou cestou. Výchozí lhůta pro zveřejnění je <strong>90 dní</strong> od prvního hlášení, po vzájemné dohodě ji lze prodloužit (např. pokud oprava vyžaduje delší nasazení).</p>
 
         <h3>Co považujeme za zranitelnost</h3>
         <ul>
@@ -113,7 +117,7 @@
             <li>Hlášení cílící na služby třetích stran, na kterých závisíme (Gmail, Microsoft 365, Seznam) — ty hlaste přímo poskytovateli.</li>
             <li>DoS fyzickým zničením zařízení, na kterém aplikace běží.</li>
         </ul>
-        <p>Po vydání opravy uvedeme nálezce v poznámkách k vydání, pokud si nepřeje zůstat v anonymitě.</p>
+        <p>Opravu zveřejníme jako bezpečnostní upozornění na GitHubu (security advisory) a uvedeme ji v poznámkách k vydání; obojí jmenuje nálezce, pokud si nepřeje zůstat v anonymitě. U problému, který se dostal do veřejného vydání, přes toto upozornění požádáme o CVE; identifikátory CVE přiděluje GitHub jako CVE Numbering Authority.</p>
     </main>
 
     <footer>

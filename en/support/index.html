@@ -85,8 +85,12 @@
 
         <h2>Reporting a security issue</h2>
         <div class="note">
-            <p><strong>Please do not report security issues in the public issue tracker.</strong> Email <a href="mailto:info@voxrox.org">info@voxrox.org</a>. We treat every report as private until a fix and a release are available.</p>
+            <p><strong>Please do not report security issues in the public issue tracker.</strong> Report them privately, in either of two ways. We treat every report as private until a fix and a release are available.</p>
         </div>
+        <ul>
+            <li><strong>GitHub private vulnerability reporting</strong> (preferred): the <a href="https://github.com/TheVoxRox/mail/security/advisories/new">Report a vulnerability</a> button on the repository's Security tab. The report, the conversation about it and the fix stay together in one private draft advisory until it is published.</li>
+            <li><strong>Email</strong> to <a href="mailto:info@voxrox.org">info@voxrox.org</a>, if you have no GitHub account or would rather not use it.</li>
+        </ul>
         <p>Please include:</p>
         <ul>
             <li>A description of the issue and how to reproduce it.</li>
@@ -94,7 +98,7 @@
             <li>Your operating system, mail provider, and whether the issue requires network access to a specific server.</li>
             <li>A proof-of-concept if you have one (in any format).</li>
         </ul>
-        <p>You should receive an acknowledgement <strong>within 7 calendar days</strong>. Our default disclosure window is <strong>90 days</strong> from the initial report, extended by mutual agreement if a fix requires a longer rollout.</p>
+        <p>You should receive an acknowledgement <strong>within 7 calendar days</strong>; if you do not, please follow up through the other channel. Our default disclosure window is <strong>90 days</strong> from the initial report, extended by mutual agreement if a fix requires a longer rollout.</p>
 
         <h3>What counts as a vulnerability</h3>
         <ul>
@@ -113,7 +117,7 @@
             <li>Reports targeting third-party services we depend on (Gmail, Microsoft 365, Seznam) — please report those directly to the provider.</li>
             <li>DoS by physically destroying the device the app runs on.</li>
         </ul>
-        <p>We will credit reporters in the release notes unless they prefer to remain anonymous.</p>
+        <p>The fix is published as a GitHub security advisory and named in the release notes, and both credit the reporter unless they prefer to remain anonymous. For an issue that shipped in a public release we request a CVE through that advisory; GitHub assigns CVE identifiers as a CVE Numbering Authority.</p>
     </main>
 
     <footer>
