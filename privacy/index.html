@@ -52,7 +52,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-11-14. Tato verze je předběžná: dosud neprošla právním review — viz „Otevřené body" na konci.</p>
+        <p class="doc-meta">Verze 2026-11-16. Tato verze je předběžná: dosud neprošla právním review — viz „Otevřené body" na konci.</p>
 
         <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti"). Logy opustí váš počítač jen tehdy, když sami pošlete diagnostický balíček (viz „Diagnostický balíček").</p>
 
@@ -113,7 +113,7 @@
         <p>Ve výchozím nastavení zavření okna aplikaci ukončí a síťová komunikace končí spolu s ní. Přepnete-li <strong>Nastavení → Vzhled → Zavření okna</strong> na „nechat běžet v oznamovací oblasti", probíhají body 1 a 2 výše i po zavření okna: aplikace se jen skryje, aby dál stahovala poštu a hlásila nové zprávy (oznámením Windows, viz „Oznámení Windows o nové poště" výše) — pořád tedy běží a pořád se v pravidelných intervalech připojuje k vašemu e-mailovému serveru. <strong>Kontrola aktualizací (bod 3) mezi ně nepatří</strong> — ta proběhne nanejvýš jednou při spuštění (a vůbec ne, pokud ji máte vypnutou) a za běhu se neopakuje, ať je okno zavřené, nebo ne. Ukončit aplikaci pak jde přes nabídku ikony v oznamovací oblasti (<strong>Ukončit</strong>).</p>
 
         <h3>Diagnostické reporty z klienta</h3>
-        <p>Neošetřené chyby rozhraní (výjimky v JavaScriptu) posílá frontend na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači, a backend je zapíše do <code>logs/mail.log</code>. Záznam obsahuje typ a text chyby, výpis zásobníku, skript, ve kterém vznikla, a obecný tvar stránky, např. <code>/mail/[accountId]/[folderName]</code> — bez čísla účtu, názvu složky a zprávy. Do logu se zapíše nejvýš 20 záznamů za minutu. Záznamy <strong>neopouštějí vaše zařízení</strong> samy od sebe a neodesílají se VoxRoxu ani žádné třetí straně.</p>
+        <p>Chyby rozhraní, které aplikace neošetřila nebo které vám umí ukázat jen jako „neočekávanou chybu“ (výjimky v JavaScriptu), posílá frontend na <strong>lokální</strong> backendový endpoint <code>POST /api/internal/client-errors</code>, který běží na 127.0.0.1 ve vašem počítači, a backend je zapíše do <code>logs/mail.log</code>. Záznam obsahuje typ a text chyby, výpis zásobníku, skript, ve kterém vznikla, a obecný tvar stránky, např. <code>/mail/[accountId]/[folderName]</code> — bez čísla účtu, názvu složky a zprávy. Do logu se zapíše nejvýš 20 záznamů za minutu. Záznamy <strong>neopouštějí vaše zařízení</strong> samy od sebe a neodesílají se VoxRoxu ani žádné třetí straně.</p>
 
         <h3>Diagnostický balíček</h3>
         <p>Tlačítkem <strong>Stáhnout diagnostiku</strong> (Nastavení → O aplikaci, případně obrazovka při potížích se spuštěním) si uložíte ZIP, který můžete poslat vývojářům, když hlásíte chybu. Nic se neodesílá automaticky: soubor se uloží do vašeho počítače a o tom, komu ho pošlete, rozhodujete vy.</p>
