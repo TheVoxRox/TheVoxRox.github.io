@@ -16,6 +16,14 @@
     --card-bg: #FFFFFF;
     --hairline: #D5D7DB;
     --focus-ring: var(--accent);
+
+    /* Space between the header and a page's h1. One value for the home hero
+       and the document pages, so the h1 does not jump when you move between them. */
+    --page-top: clamp(3rem, 8vh, 5rem);
+
+    /* Longest line of running text: about 75 characters of Atkinson
+       Hyperlegible, inside the 80 that WCAG 1.4.8 allows. */
+    --measure: 33em;
 }
 
 * { box-sizing: border-box; }
@@ -104,9 +112,9 @@ nav a {
     padding: 0.2rem 0;
 }
 
-nav a:hover, nav a:focus {
+/* Focus keeps the global ring, as it does everywhere else on the page. */
+nav a:hover, nav a:focus-visible {
     border-bottom-color: var(--accent);
-    outline: none;
 }
 
 nav a[aria-current="page"] {
@@ -121,6 +129,9 @@ nav a[aria-current="page"] {
     font-weight: bold;
 }
 .lang-switch a { padding: 0.2rem 0.35rem; }
+/* The padding widens the click target; the negative margin keeps the visible
+   "CS" on the same gap as the other items and on the left edge when it wraps. */
+.lang-switch { margin-left: -0.35rem; }
 .lang-switch [aria-current="true"] {
     color: var(--accent-ink);
     text-decoration: underline;
@@ -128,8 +139,9 @@ nav a[aria-current="page"] {
 .lang-switch .sep { color: var(--hairline); }
 
 /* --- Sections ------------------------------------------------------------- */
-.hero { padding: clamp(3rem, 8vh, 5rem) 0 2rem; }
+.hero { padding: var(--page-top) 0 2rem; }
 section { padding: 3rem 0; }
+main p, main li { max-width: var(--measure); }
 
 .moto-eyebrow {
     text-transform: uppercase;
@@ -140,6 +152,11 @@ section { padding: 3rem 0; }
     margin-bottom: 0.75rem;
     display: block;
 }
+
+/* No word left alone on a heading's last line, none on a paragraph's.
+   Browsers without text-wrap simply wrap as before. */
+h1, h2, h3, .lead, .doc-meta { text-wrap: balance; }
+p, li { text-wrap: pretty; }
 
 h1 {
     font-size: clamp(2.2rem, 6vw, 3.5rem);
@@ -236,6 +253,14 @@ h4 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
     margin-top: 2rem;
 }
 
+/* What to know before installing: read after the button, quieter than it. */
+.download-notes {
+    color: var(--text-sec);
+    margin: 1.5rem 0 0;
+    padding-left: 1.25rem;
+}
+.download-notes li { margin-bottom: 0.5rem; }
+
 /* --- Links (body copy) ---------------------------------------------------- */
 main a:not(.cta-button):not(.logo) {
     color: var(--accent-ink);
@@ -250,8 +275,11 @@ main a:not(.cta-button):not(.logo):hover {
 /* Paths, registry keys and URLs have no break point of their own; at 320 px
    (WCAG 1.4.10) they pushed the page sideways. "anywhere" breaks a word only
    when it cannot fit, and lets the table cells shrink with them. */
-.prose { padding-bottom: 2rem; overflow-wrap: anywhere; }
-.prose p, .prose li { max-width: 70ch; }
+.prose { padding-top: var(--page-top); padding-bottom: 2rem; overflow-wrap: anywhere; }
+
+/* A heading sits closer to the text it introduces than to the text before it. */
+.prose h2 { margin: 2.5rem 0 1rem; }
+.prose h3 { margin-top: 2.25rem; }
 .prose ul, .prose ol { padding-left: 1.5rem; }
 .prose li { margin-bottom: 0.5rem; }
 
@@ -294,7 +322,11 @@ main a:not(.cta-button):not(.logo):hover {
     background: var(--card-bg);
     padding: 1rem 1.25rem;
     margin: 1.5rem 0;
+    /* As wide as the text it holds, so the box ends where its lines do. */
+    max-width: calc(var(--measure) + 2.5rem + 4px);
 }
+.note > :first-child { margin-top: 0; }
+.note > :last-child { margin-bottom: 0; }
 
 /* --- Footer --------------------------------------------------------------- */
 footer {
@@ -320,6 +352,7 @@ footer {
     border-bottom: 2px solid transparent;
 }
 .footer-nav a:hover, .footer-nav a:focus { border-bottom-color: var(--accent); }
+.footer-nav a[aria-current="page"] { border-bottom-color: var(--ink); }
 
 /* --- Focus state (global) ------------------------------------------------- */
 a:focus-visible,
@@ -329,8 +362,10 @@ button:focus-visible {
 }
 
 /* --- Responsive ----------------------------------------------------------- */
+/* Narrow screens keep the one left edge of the desktop layout: centred
+   multi-line text loses the edge a magnifier user tracks from line to line. */
 @media (max-width: 650px) {
-    .nav-wrap { justify-content: center; text-align: center; }
-    h1, .moto-eyebrow, .lead { text-align: center; margin-left: auto; margin-right: auto; }
     .project-card { box-shadow: 4px 4px 0px var(--ink); }
+    /* Stacked buttons of two widths leave a jagged right edge. */
+    .cta-row .cta-button { flex: 1 1 100%; text-align: center; }
 }

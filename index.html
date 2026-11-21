@@ -44,9 +44,9 @@
             </a>
             <nav aria-label="Hlavní">
                 <ul>
-                    <li><a href="#vize">Vize</a></li>
-                    <li><a href="#projekty">Projekty</a></li>
-                    <li><a href="#kontakt">Kontakt</a></li>
+                    <li><a href="/#projekty">Projekty</a></li>
+                    <li><a href="/support/">Podpora</a></li>
+                    <li><a href="/privacy/">Zásady soukromí</a></li>
                     <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
                     <li>
                         <span class="lang-switch">
@@ -73,7 +73,7 @@
         </section>
 
         <section id="projekty">
-            <h2>Aktuálně vyvíjíme</h2>
+            <h2>Projekty</h2>
             <article class="project-card">
                 <span class="badge">Stabilní verze</span>
                 <h3>VoxRox Mail</h3>
@@ -85,19 +85,23 @@
                     <li><strong>Svoboda:</strong> Open source pod licencí MIT, s důrazem na soukromí.</li>
                 </ul>
 
+                <div class="download">
+                    <h4>Stažení</h4>
+                    <p>Stabilní verze pro Windows je na stránce posledního vydání na GitHubu.</p>
+                    <div class="cta-row">
+                        <a href="https://github.com/TheVoxRox/mail/releases/latest" class="cta-button">Stáhnout pro Windows</a>
+                        <a href="https://github.com/TheVoxRox/mail" class="cta-button cta-secondary">Sledovat vývoj na GitHubu</a>
+                    </div>
+                    <ul class="download-notes">
+                        <li>Instalátor zatím není podepsaný, takže Windows ohlásí neznámého vydavatele. Jak stažený soubor před spuštěním ověřit, popisuje <a href="https://github.com/TheVoxRox/mail/blob/main/frontend/END_USER_README.md#ověření-před-spuštěním">návod pro uživatele</a>; jak budeme vydání podepisovat, popisují <a href="/code-signing/">zásady podepisování kódu</a>.</li>
+                        <li>Účet Gmail připojíte přes heslo aplikace; přihlášení přes Google zatím funguje jen pro účty na seznamu testerů, dokud Google aplikaci neověří.</li>
+                        <li>Bety s novinkami dál vycházejí průběžně: chcete-li je dostávat dřív, přepněte v aplikaci Nastavení → O aplikaci → Kanál aktualizací na Beta.</li>
+                    </ul>
+                </div>
+
                 <div class="tech-info">
                     <h4>Technické pozadí</h4>
                     <p>Nativní <strong>desktopová aplikace</strong> postavená na frameworku <strong>Tauri</strong> s výkonným jádrem v <strong>Javě (Spring Boot)</strong>, které běží lokálně jako sidecar. Vaše pošta zůstává na vašem zařízení. Aktuálně vyvíjíme a testujeme pro Windows; verze pro macOS (VoiceOver) a Linux (Orca) jsou na roadmapě.</p>
-                </div>
-
-                <div class="download">
-                    <h4>Stažení</h4>
-                    <p>Stabilní verze pro Windows je na stránce posledního vydání na GitHubu. Bety s novinkami dál vycházejí průběžně: chcete-li je dostávat dřív, přepněte v aplikaci Nastavení → O aplikaci → Kanál aktualizací na Beta. Účet Gmail připojíte přes heslo aplikace; přihlášení přes Google zatím funguje jen pro účty na seznamu testerů, dokud Google aplikaci neověří. Instalátor zatím není podepsaný, takže Windows ohlásí neznámého vydavatele. Jak stažený soubor před spuštěním ověřit, popisuje <a href="https://github.com/TheVoxRox/mail/blob/main/frontend/END_USER_README.md#ověření-před-spuštěním">návod pro uživatele</a>; jak budeme vydání podepisovat, popisují <a href="/code-signing/">zásady podepisování kódu</a>.</p>
-                </div>
-
-                <div class="cta-row">
-                    <a href="https://github.com/TheVoxRox/mail/releases/latest" class="cta-button">Stáhnout pro Windows</a>
-                    <a href="https://github.com/TheVoxRox/mail" class="cta-button cta-secondary">Sledovat vývoj na GitHubu</a>
                 </div>
             </article>
         </section>
@@ -112,10 +116,9 @@
     <footer>
         <div class="container">
             <ul class="footer-nav">
-                <li><a href="#vize">Vize</a></li>
-                <li><a href="#projekty">Projekty</a></li>
-                <li><a href="/privacy/">Zásady soukromí</a></li>
+                <li><a href="/" aria-current="page">Domů</a></li>
                 <li><a href="/support/">Podpora</a></li>
+                <li><a href="/privacy/">Zásady soukromí</a></li>
                 <li><a href="/code-signing/" lang="en">Code signing policy</a></li>
                 <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
             </ul>
