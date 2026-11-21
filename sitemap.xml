@@ -8,6 +8,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/"/>
   </url>
   <url>
+    <loc>https://voxrox.org/mail/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/mail/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/mail/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/mail/"/>
+  </url>
+  <url>
+    <loc>https://voxrox.org/en/mail/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/mail/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/mail/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://voxrox.org/mail/"/>
+  </url>
+  <url>
     <loc>https://voxrox.org/privacy/</loc>
     <xhtml:link rel="alternate" hreflang="cs" href="https://voxrox.org/privacy/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://voxrox.org/en/privacy/"/>

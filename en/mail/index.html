@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoxRox Mail — accessible email client for screen reader users (NVDA, JAWS)</title>
+    <meta name="description" content="An email client for Windows, made for people who use a screen reader and the keyboard. Tested with NVDA and JAWS, Outlook shortcuts, your mail stays local. Free and open source.">
+
+    <link rel="canonical" href="https://voxrox.org/en/mail/">
+    <link rel="alternate" hreflang="cs" href="https://voxrox.org/mail/">
+    <link rel="alternate" hreflang="en" href="https://voxrox.org/en/mail/">
+    <link rel="alternate" hreflang="x-default" href="https://voxrox.org/mail/">
+
+    <link rel="icon" href="/assets/voxrox-mark-favicon.svg" type="image/svg+xml">
+    <meta name="theme-color" content="#2E6BE6">
+
+    <!-- Open Graph / social -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="VoxRox">
+    <meta property="og:title" content="VoxRox Mail — an accessible email client for Windows">
+    <meta property="og:description" content="For people who work with a screen reader and the keyboard. Tested with NVDA and JAWS, free and open source.">
+    <meta property="og:url" content="https://voxrox.org/en/mail/">
+    <meta property="og:image" content="https://voxrox.org/assets/voxrox-mail-social-en.png">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta property="og:image:alt" content="VoxRox Mail — an accessible email client for Windows, built for screen reader users.">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="cs_CZ">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "VoxRox Mail",
+        "description": "An email client for Windows, built for screen reader users and tested with NVDA and JAWS.",
+        "url": "https://voxrox.org/en/mail/",
+        "image": "https://voxrox.org/assets/voxrox-mail-social-en.png",
+        "applicationCategory": "CommunicationApplication",
+        "operatingSystem": "Windows",
+        "downloadUrl": "https://github.com/TheVoxRox/mail/releases/latest",
+        "license": "https://opensource.org/licenses/MIT",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "inLanguage": ["cs", "en"],
+        "sameAs": "https://github.com/TheVoxRox/mail",
+        "publisher": { "@type": "Organization", "name": "VoxRox", "url": "https://voxrox.org/" }
+    }
+    </script>
+
+    <link rel="stylesheet" href="/assets/styles.css">
+</head>
+<body>
+
+    <a href="#main-content" class="skip-link">Skip to content</a>
+
+    <header>
+        <div class="container nav-wrap">
+            <a href="/en/" class="logo" aria-label="VoxRox — home">
+                <svg width="50" height="50" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+                    <path d="M 44.246 2.436 L 61.564 19.754 L 61.564 44.246 L 44.246 61.564 L 19.754 61.564 L 2.436 44.246 L 2.436 19.754 L 19.754 2.436 Z" fill="#0E1116"/>
+                    <path d="M 39.960 12.783 L 51.217 24.040 L 51.217 39.960 L 39.960 51.217 L 24.040 51.217 L 12.783 39.960 L 12.783 24.040 L 24.040 12.783 Z" fill="#2E6BE6"/>
+                    <path d="M 35.551 23.426 L 40.574 28.449 L 40.574 35.551 L 35.551 40.574 L 28.449 40.574 L 23.426 35.551 L 23.426 28.449 L 28.449 23.426 Z" fill="#FAFAF7"/>
+                </svg>
+                <span class="brand-name">VoxRox</span>
+            </a>
+            <nav aria-label="Main">
+                <ul>
+                    <li><a href="/en/#projects">Projects</a></li>
+                    <li><a href="/en/support/">Support</a></li>
+                    <li><a href="/en/privacy/">Privacy Policy</a></li>
+                    <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+                    <li>
+                        <span class="lang-switch">
+                            <a href="/mail/" hreflang="cs" lang="cs">CS</a>
+                            <span class="sep" aria-hidden="true">|</span>
+                            <a href="/en/mail/" aria-current="true" hreflang="en" lang="en">EN</a>
+                        </span>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container" id="main-content">
+        <section class="hero">
+            <span class="moto-eyebrow">For Windows • Free • Open source</span>
+            <h1>VoxRox Mail</h1>
+            <p class="lead">An email client for people who read the screen with a screen reader and work by keyboard. It is written by someone who works with a screen reader every day, and tested with NVDA and JAWS.</p>
+            <div class="cta-row">
+                <a href="#download" class="cta-button">Go to download</a>
+            </div>
+        </section>
+
+        <section id="screen-reader">
+            <h2>Built for a screen reader</h2>
+            <ul>
+                <li>Message and contact lists are grids you move through with the arrow keys, each cell saying what its column holds.</li>
+                <li>The keyboard shortcuts follow Microsoft Outlook, so the habits you have from work carry over. The full list is in the app under Settings → Keyboard shortcuts.</li>
+                <li>Tested with the NVDA and JAWS screen readers on Windows.</li>
+                <li>The accessibility target is WCAG 2.2 Level AA.</li>
+            </ul>
+        </section>
+
+        <section id="accounts">
+            <h2>The accounts you have</h2>
+            <p>The add-account wizard recognises your provider from the address and offers only what works there.</p>
+            <ul>
+                <li><strong>Gmail and Google Workspace</strong> with an app password. Signing in through Google works only for accounts on the tester list until Google verifies the app.</li>
+                <li><strong>Outlook.com, Hotmail and Microsoft 365</strong> by signing in with your Microsoft account.</li>
+                <li><strong>Seznam.cz</strong> with your account password, or an app password if two-step verification is on.</li>
+                <li><strong>Any other provider</strong> or your own server over IMAP and SMTP.</li>
+            </ul>
+        </section>
+
+        <section id="privacy">
+            <h2>Your mail stays on your computer</h2>
+            <p>Accounts, messages and contacts live in a database on your disk, and VoxRox runs no server your mail would pass through. The app collects no telemetry, analytics or crash reports. Remote images in a message stay blocked until you allow them. The details are in the <a href="/en/privacy/">privacy policy</a>.</p>
+        </section>
+
+        <section id="features">
+            <h2>What else it does</h2>
+            <ul>
+                <li>Conversations, or one message at a time.</li>
+                <li>Drafts, replies and forwarding; addresses are suggested from your contacts and from the mail you have exchanged.</li>
+                <li>Markdown in an ordinary text field: the recipient gets a formatted message, and if you do not use Markdown, nothing changes for you.</li>
+                <li>Contacts with your own labels and vCard export.</li>
+                <li>Runs in the notification area and announces new mail through Windows notifications.</li>
+                <li>Czech and English interface, light and dark themes.</li>
+                <li>Updates that install from inside the app, each one's signature checked before it installs.</li>
+            </ul>
+        </section>
+
+        <section id="download">
+            <h2>Download and install</h2>
+            <p>The installer for 64-bit Windows is on the latest release page on GitHub. Installing needs no administrator rights, and there is nothing else to install, Java included.</p>
+            <div class="cta-row">
+                <a href="https://github.com/TheVoxRox/mail/releases/latest" class="cta-button">Download for Windows</a>
+            </div>
+            <ul class="download-notes">
+                <li>The installer is not signed yet, so Windows reports an unknown publisher. How to verify the downloaded file before running it is described in <a href="https://github.com/TheVoxRox/mail/blob/main/docs/VERIFYING_THE_INSTALLER.md">Verifying the installer</a>; how releases will be signed is in the <a href="/en/code-signing/">code signing policy</a>.</li>
+                <li>Betas with new features keep coming: to get them earlier, set Settings → About → Update channel to Beta in the app.</li>
+            </ul>
+        </section>
+
+        <section id="get-involved">
+            <h2>Free and open</h2>
+            <p>VoxRox Mail is open source under the MIT license, and its source code is on <a href="https://github.com/TheVoxRox/mail">GitHub</a>. Ideas for new features go to the <a href="https://github.com/TheVoxRox/mail/discussions/categories/ideas">Ideas</a> discussions, bugs to <a href="https://github.com/TheVoxRox/mail/issues">Issues</a> or to <a href="mailto:info@voxrox.org">info@voxrox.org</a>. What to send so we can help is on the <a href="/en/support/">Support</a> page.</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <ul class="footer-nav">
+                <li><a href="/en/">Home</a></li>
+                <li><a href="/en/mail/" aria-current="page">VoxRox Mail</a></li>
+                <li><a href="/en/support/">Support</a></li>
+                <li><a href="/en/privacy/">Privacy Policy</a></li>
+                <li><a href="/en/code-signing/">Code signing policy</a></li>
+                <li><a href="https://github.com/TheVoxRox">GitHub</a></li>
+            </ul>
+            <p>&copy; 2026 VoxRox • Built for an inclusive future.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
