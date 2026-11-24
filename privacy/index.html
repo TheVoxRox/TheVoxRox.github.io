@@ -51,7 +51,7 @@
 
     <main class="container prose" id="main-content">
         <h1>Zásady ochrany soukromí — VoxRox Mail</h1>
-        <p class="doc-meta">Verze 2026-11-16. Tato verze je předběžná: dosud neprošla právním review — viz „Otevřené body“ na konci.</p>
+        <p class="doc-meta">Verze 2026-11-24. Tato verze je předběžná: dosud neprošla právním review — viz „Otevřené body“ na konci.</p>
 
         <p>VoxRox Mail je desktopový e-mailový klient pro Windows. Aplikace běží lokálně na vašem počítači. Vaše e-maily, kontakty, přihlašovací údaje k účtům a logy zůstávají na vašem zařízení a neposílají se na žádný server VoxRox ani jiné třetí strany — kromě těch, které si sami zvolíte přidáním e-mailového účtu (váš poskytovatel e-mailu, případně Google nebo Microsoft pro OAuth přihlášení), kromě kontroly dostupných aktualizací na GitHubu a kromě vzdálených obrázků ve zprávě, jejichž načtení sami výslovně povolíte (obojí viz „Jaká data putují po síti“). Logy opustí váš počítač jen tehdy, když sami pošlete diagnostický balíček (viz „Diagnostický balíček“).</p>
 
@@ -124,6 +124,9 @@
         <p>Balíček <strong>neobsahuje</strong> hesla, OAuth tokeny, obsah zpráv, předměty ani přílohy. Než ZIP pošlete, můžete ho otevřít a projít: logy v něm jsou obyčejné textové soubory. Pokud ho přikládáte k veřejnému hlášení (například na GitHubu), uvidí jeho obsah kdokoli.</p>
         <p>Když se aplikace nespustí, diagnostiku stáhnout nejde, protože ji připravuje služba aplikace. Na obrazovce s chybou spuštění je proto také tlačítko <strong>Uložit logy</strong>: uloží do složky Stažené soubory ZIP se všemi soubory ze složky <code>logs/</code> (nejvýš 64 MB textu, novější přednostně, starší soubory <code>.gz</code> rozbalené) a krátkou poznámku s verzí aplikace. Logy v něm jsou tak, jak jsou na disku, se stejnou pojistkou jako v diagnostickém balíčku: nezamaskované e-mailové adresy se zamaskují a tokeny a interní API klíč se nahradí. Ani tento ZIP se nikam neodesílá sám.</p>
 
+        <h3>Formulář Napište nám</h3>
+        <p>Formulář <strong>Napište nám</strong> (Nastavení → Napište nám) připraví zprávu pro vývojáře na adresu <strong>info@voxrox.org</strong> a otevře ji v okně nové zprávy. Sám nic neodesílá: zprávu odešlete vy, ze svého e-mailového účtu přes svého poskytovatele, a do té doby ji můžete upravit nebo zahodit. Na konci textu jsou technické údaje (verze aplikace, kanál aktualizací a jazyk rozhraní), které můžete smazat. Diagnostický balíček se přiloží, jen když to ve formuláři zaškrtnete. Připravená zpráva se jako každá jiná ukládá jako koncept do složky Koncepty vašeho účtu, i s přílohou, a odeslaná zůstane ve složce Odeslané.</p>
+
         <h2>Třetí strany</h2>
         <p>Pokud přidáte účet, vstupují do hry tito poskytovatelé:</p>
         <ul>
@@ -168,8 +171,9 @@
         <p>Tato verze je předběžná, dokud neprojde právním review. Při každé materiální změně (např. zapojení telemetrie, změna seznamu třetích stran) tento dokument aktualizujeme. Aktuální verze je vždy v repozitáři projektu a na této stránce.</p>
 
         <h2>Otevřené body</h2>
-        <p>Tato položka bude doplněna předtím, než je tento dokument finalizován:</p>
+        <p>Tyto položky budou doplněny předtím, než je tento dokument finalizován:</p>
         <ul>
+            <li>Korespondence s podporou: k čemu VoxRox používá zprávy a diagnostiku, které mu pošlete (formulářem Napište nám nebo e-mailem), a jak dlouho je uchovává.</li>
             <li>Právní review celého dokumentu (GDPR) — zejména formulace „správce dat“ pro firemní nasazení a sekce „Vaše odpovědnost a zálohy“.</li>
         </ul>
 
